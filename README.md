@@ -16,14 +16,14 @@ Built with
 * CSS
 * React
 
-### Link to Game
+### Link to site
 
 This is [a link to our git repo](https://github.com/darcyhmansfield/scuba-dive-log).
 
 ### Features
 
 * You can input information into a form which will store the data regarding that single entry, which a user can then display or edit.  
-* You can view of all our log entries. 
+* You can view all dive log entries. 
 * You can also search for different dive sites based on a specific location which should render a map. 
 
 ### Approach Taken
