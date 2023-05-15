@@ -1,4 +1,4 @@
-# Project1 - [Name of Scuba-Diving Site]
+# Project1 - Dive Track
 
 ## Project Overview
 
