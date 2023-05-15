@@ -8,6 +8,21 @@ const CRUDTesting = () => {
 
 /////////// Gets All Dives In DB
 
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        async function getUserData() {
+            await supabase.auth.getUser().then((value) => {
+                // value.data.user
+                if (value.data?.user) {
+                    console.log(value.data.user);
+                    setUser(value.data.user);
+                }
+            })
+        }
+        getUserData();
+    }, []);
+
   const [ dives, setDives ] = useState([])
 
   async function getAllDives() {
@@ -41,7 +56,8 @@ const CRUDTesting = () => {
                 equipment: equipment,
                 dive_buddy: buddy,
                 dive_company: diveCompany,
-                overall_feeling: overallFeeling
+                overall_feeling: overallFeeling,
+                user_id: user.id
             })
       }
 
