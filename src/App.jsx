@@ -6,8 +6,9 @@ import Index from "./components/Index";
 import Show from "./components/Show";
 import Update from "./components/Update";
 import APItest from "./components/API-Test";
-
 import { supabase } from '/src/config/supabaseClient'
+import Navbar from "./components/Navbar";
+import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -40,9 +41,11 @@ async function addDive(diveLogObject) {
 
 //////////////////////// CRUD /////////////////////////
 
+//////////////////////// Routes /////////////////////////
 
   return (
     <Router>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/crudtest" element={<CRUDTesting />} />
@@ -57,4 +60,5 @@ async function addDive(diveLogObject) {
   )
 }
 
+//////////////////////// Routes /////////////////////////
 export default App;
