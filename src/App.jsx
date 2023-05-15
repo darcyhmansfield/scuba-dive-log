@@ -5,7 +5,8 @@ import New_Entry from "./components/New_Entry";
 import Index from "./components/Index";
 import Show from "./components/Show";
 import Update from "./components/Update";
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import APItest from "./components/API-Test";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/index" element={<Index />} />
         <Route path="/show" element={<Show />} />
         <Route path="/update" element={<Update />} />
+        <Route path="/apitest" element={<APItest />} />
       </Routes>
     </Router>
   )
