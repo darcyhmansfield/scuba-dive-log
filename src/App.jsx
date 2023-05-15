@@ -6,7 +6,6 @@ import Index from "./components/Index";
 import Show from "./components/Show";
 import Update from "./components/Update";
 import APItest from "./components/API-Test";
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -21,7 +20,6 @@ function App() {
         <Route path="/show" element={<Show />} />
         <Route path="/update" element={<Update />} />
         <Route path="/apitest" element={<APItest />} />
-
       </Routes>
     </Router>
   )

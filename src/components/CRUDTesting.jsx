@@ -39,7 +39,6 @@ const CRUDTesting = () => {
     [])
 
 /////////// Adds Dive to DB
-
     async function addDive() {
         const { data } = await supabase
             .from('Dive_Log')
@@ -96,7 +95,7 @@ const CRUDTesting = () => {
                     <Form.Control 
                         type='number'
                         onChange={(event) => setDiveNum(event.target.value)}
-                        
+                        required
                     />
                     <Form.Label>Date</Form.Label>
                     <Form.Control 
