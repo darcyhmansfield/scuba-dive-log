@@ -40,3 +40,74 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Nav bar */
+
+/* Sets the box-sizing property for all elements to border-box */
+* {
+  box-sizing: border-box;
+}
+
+/* Sets the margin property of the body element to 0 */
+body {
+  margin: 0;
+}
+
+/* Styles for the navigation bar */
+.nav {
+    /* Sets the background color to dark gray */
+  background-color: #333;
+    /* Sets the font color to white */
+  color: white;
+    /* Sets the display property to flex */
+  display: flex;
+    /* Aligns items along the main axis with space between them */
+  justify-content: space-between;
+    /* Aligns items along the cross axis to stretch them vertically */
+  align-items: stretch;
+    /* Sets the gap between flex items to 2rem */
+  gap: 2rem;
+    /* Adds padding to the left and right of the navigation bar */
+  padding: 0 1rem;
+}
+
+/* Styles for the site title link */
+.site-title {
+  font-size: 2rem;
+}
+
+/* Styles for the navigation bar links */
+.nav ul {
+  /* Removes padding and margin from the unordered list */
+  padding: 0;
+  margin: 0;
+  /* Removes the bullet points from the unordered list */
+  list-style: none;
+  /* Sets the display property of the unordered list to flex */
+  display: flex;
+  /* Sets the gap between flex items to 1rem */
+  gap: 1rem;
+}
+
+/* Styles for the links within the navigation bar */
+.nav a {
+  /* Sets the color to inherit, so it takes the color of its parent */
+  color: inherit;
+  /* Removes the underline from the link */
+  text-decoration: none;
+  /* Sets the height of the link to 100% of its parent */
+  height: 100%;
+  /* Sets the display property to flex */
+  display: flex;
+  /* Aligns items along the cross axis to center them vertically */
+  align-items: center;
+  /* Adds padding to the top and bottom of the link */
+  padding: .25rem;
+}
+
+/* Styles for the navigation bar list items on hover */
+.nav li:hover {
+  /* Sets the background color to light gray */
+  background-color: #777;
+}
+
