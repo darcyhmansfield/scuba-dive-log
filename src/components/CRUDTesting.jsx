@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '/src/config/supabaseClient'
-import "bootstrap/dist/css/bootstrap.min.css"
+// import "bootstrap/dist/css/bootstrap.min.css"
 import { Navbar, Container, Nav, Form, Row, Col, Button } from 'react-bootstrap'
 
 
