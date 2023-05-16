@@ -22,10 +22,16 @@ const Navbar = () => {
           <Link to="/index">View Dives</Link>
         </li>
         {/* The fourth list item links to a page to search for dive sites */}
-        <li>
-          <Link to="/search">Search</Link>
-        </li>
       </ul>
+      {/* The fourth list item contains the search box */}
+      <li>
+        <Link to="/apitest">
+          <form>
+            <input type="text" placeholder="Sydney" />
+            <input type="submit" value="Search" />
+          </form>
+        </Link>
+      </li>
     </nav>
   );
 };

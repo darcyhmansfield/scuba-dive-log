@@ -111,3 +111,14 @@ body {
   background-color: #777;
 }
 
+.nav form {
+  /* Aligns items along the main axis with space between them */
+  justify-content: space-between;
+   /* Sets padding */
+   padding: .5rem;
+   margin: .5rem;
+   /* Sets the display property of the unordered list to flex */
+   display: flex;
+   /* Sets the gap between flex items to 1rem */
+   gap: 1rem;
+}
