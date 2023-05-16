@@ -127,10 +127,12 @@ body {
    gap: 1rem;
 }
 
-/* Setting the background color of the body to ocean blue */
+/* Setting the background of the body to an animated image of the ocean */
 body {
   background-image: url('images/ocean.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+
 
