@@ -25,7 +25,7 @@ const Navbar = () => {
       </ul>
       {/* The fourth list item contains the search box */}
       <li>
-        <Link to="/apitest">
+        <Link to="/api-test">
           <form>
             <input type="text" placeholder="Sydney" />
             <input type="submit" value="Search" />
