@@ -55,6 +55,12 @@ body {
 
 /* Styles for the navigation bar */
 .nav {
+  /* Positions the navigation bar fixed to the top left corner of the viewport */
+  position: fixed;
+  top: 0;
+  left: 0;
+   /* Makes the navigation bar span the full width of the viewport */
+  width: 100%;
     /* Sets the background color to dark gray */
   background-color: #333;
     /* Sets the font color to white */
@@ -71,11 +77,6 @@ body {
   padding: 0 1rem;
 }
 
-/* Styles for the site title link */
-.site-title {
-  font-size: 2rem;
-}
-
 /* Styles for the navigation bar links */
 .nav ul {
   /* Removes padding and margin from the unordered list */
@@ -87,6 +88,9 @@ body {
   display: flex;
   /* Sets the gap between flex items to 1rem */
   gap: 1rem;
+  /* Spacing the li elements evenly within the unordered list */
+  flex: 1;
+  justify-content: space-evenly;
 }
 
 /* Styles for the links within the navigation bar */

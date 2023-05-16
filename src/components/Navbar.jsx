@@ -5,13 +5,10 @@ const Navbar = () => {
   // This component returns a navigation bar with links to various pages
   return (
     <nav className="nav">
-      {/* Added a link to the homepage with the class "site-title" */}
-      <Link to="/" className="site-title">Dive Track</Link>
-      {/* An unordered list of links to other pages */}
       <ul>
         {/* The first list item links to the homepage */}
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">🏠</Link>
         </li>
         {/* The second list item links to a page to log a new dive */}
         <li>
@@ -21,17 +18,11 @@ const Navbar = () => {
         <li>
           <Link to="/Dives">View Dives</Link>
         </li>
-        {/* The fourth list item links to a page to search for dive sites */}
+      {/* The fourth list item contains a link to the search page */}
+        <li>
+          <Link to="/apitest">🔎</Link>
+        </li>
       </ul>
-      {/* The fourth list item contains the search box */}
-      <li>
-        <Link to="/api-test">
-          <form>
-            <input type="text" placeholder="Sydney" />
-            <input type="submit" value="Search" />
-          </form>
-        </Link>
-      </li>
     </nav>
   );
 };
