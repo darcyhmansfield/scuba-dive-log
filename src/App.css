@@ -126,3 +126,11 @@ body {
    /* Sets the gap between flex items to 1rem */
    gap: 1rem;
 }
+
+/* Setting the background color of the body to ocean blue */
+body {
+  background-image: url('images/ocean.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
