@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react'
 import { supabase } from '/src/config/supabaseClient'
 import Navbar from "./components/Navbar";
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 
 function App() {
 
@@ -32,7 +32,15 @@ function App() {
 
 //////////////////////// CRUD /////////////////////////
 
-////// Show All of a User's Dives
+////// Show a specific dive
+
+
+// const params = useParams();
+// let diveId = params.diveId
+// console.log(params)
+
+
+////// Show all of a user's dives
 
 const [ userDives, setUserDives ] = useState([])
 
@@ -71,6 +79,9 @@ async function addDive(diveLogObject) {
           overall_feeling: diveLogObject.overallFeeling,
           user_id: diveLogObject.user_id
       })
+
+      getUserDives()
+
 }
 
 //////////////////////// CRUD /////////////////////////
@@ -85,8 +96,8 @@ async function addDive(diveLogObject) {
         <Route path="/crudtest" element={<CRUDTesting />} />
         <Route path="/userhome" element={<User_Home_Page />} />
         <Route path="/newentry" element={<New_Entry onSubmit={ addDive }/>} />
-        <Route path="/index" element={<Index userDives={ userDives } />} />
-        <Route path="/show" element={<Show />} />
+        <Route path="/Dives" element={<Index userDives={ userDives } />} />
+        <Route path="/Dives/:diveId" element={<Show userDives={ userDives }/>} />
         <Route path="/update" element={<Update />} />
         <Route path="/apitest" element={<APItest />} />
       </Routes>

@@ -19,7 +19,7 @@ const Navbar = () => {
         </li>
         {/* The third list item links to a page to view all dives */}
         <li>
-          <Link to="/index">View Dives</Link>
+          <Link to="/Dives">View Dives</Link>
         </li>
         {/* The fourth list item links to a page to search for dive sites */}
       </ul>

@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react'
-import { supabase } from '/src/config/supabaseClient'
-import "bootstrap/dist/css/bootstrap.min.css"
-import { Container, Form,Button } from 'react-bootstrap'
+import { useState, useEffect } from 'react';
+import { supabase } from '/src/config/supabaseClient';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Container, Form,Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const New_Entry = (props) => {
+
+    const navigate = useNavigate()
 
 //////// Gets Current User/Session
 
@@ -62,9 +65,11 @@ const New_Entry = (props) => {
         }
 
         ////////////// Passes object to App.jsx
-        
+
         console.log(diveLogObject)
         props.onSubmit(diveLogObject)
+
+        
         
         //////////////////////// Resets Form
 
@@ -84,6 +89,8 @@ const New_Entry = (props) => {
         setDiveCompany('');
 
         event.target.reset()
+
+        navigate('/Dives')
        
     }
 
@@ -98,26 +105,31 @@ const New_Entry = (props) => {
                     <Form.Control 
                         type='number'
                         onChange={(event) => setDiveNum(event.target.value)}
+                        required
                     />
                     <Form.Label>Date</Form.Label>
                     <Form.Control 
                         type='date'
                         onChange={(event) => setDate(event.target.value)}
+                        required
                     />
                     <Form.Label>Dive Site</Form.Label>
                     <Form.Control 
                         type='text'
                         onChange={(event) => setDiveSite(event.target.value)}
+                        required
                     />
                     <Form.Label>Max Depth</Form.Label>
                     <Form.Control 
                         type='number'
                         onChange={(event) => setMaxDepth(event.target.value)}
+                        required
                     />
                     <Form.Label>Bottom Time</Form.Label>
                     <Form.Control 
                         type='number'
                         onChange={(event) => setBottomTime(event.target.value)}
+                        required
                     />
                     <Form.Label>Dive Type</Form.Label>
                     <Form.Control 

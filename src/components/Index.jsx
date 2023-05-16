@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '/src/config/supabaseClient'
 import Table from 'react-bootstrap/Table';
+import { Link } from "react-router-dom";
 
 const Index = (props) => {
 
@@ -20,13 +21,14 @@ const Index = (props) => {
         <tbody>
             { props.userDives ? (
                 props.userDives.map((dive) => (
-                <tr>
-                    <td>{ dive.dive_number }</td>
-                    <td>{ dive.date }</td>
-                    <td>{ dive.dive_site }</td>
-                    <td>{ dive.max_depth }</td>
-                    <td>{ dive.bottom_time }</td>
-                </tr>
+                
+                    <tr key={dive.id}> 
+                        <td><Link to={ `/Dives/${dive.id}` }>{ dive.dive_number }</Link></td>
+                        <td>{ dive.date }</td>
+                        <td>{ dive.dive_site }</td>
+                        <td>{ dive.max_depth }</td>
+                        <td>{ dive.bottom_time }</td>   
+                    </tr>
                 ))
             ) : ( 
                 <tr>
