@@ -15,7 +15,7 @@ const Navbar = () => {
         </li>
         {/* The second list item links to a page to log a new dive */}
         <li>
-          <Link to="/newentry">Log Dive</Link>
+          <Link to="/log-dive">Log Dive</Link>
         </li>
         {/* The third list item links to a page to view all dives */}
         <li>

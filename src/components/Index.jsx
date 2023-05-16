@@ -26,8 +26,8 @@ const Index = (props) => {
                         <td><Link to={ `/Dives/${dive.id}` }>{ dive.dive_number }</Link></td>
                         <td>{ dive.date }</td>
                         <td>{ dive.dive_site }</td>
-                        <td>{ dive.max_depth }</td>
-                        <td>{ dive.bottom_time }</td>   
+                        <td>{ dive.max_depth } m</td>
+                        <td>{ dive.bottom_time } minutes</td>   
                     </tr>
                 ))
             ) : ( 

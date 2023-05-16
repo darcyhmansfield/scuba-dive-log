@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Form,Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
-const New_Entry = (props) => {
+const New_Dive = (props) => {
 
     const navigate = useNavigate()
 
@@ -99,7 +99,7 @@ const New_Entry = (props) => {
     return (
         <div>
             <Container>
-                <h3>Add Dive to DB</h3>
+                <h3>Log Dive</h3>
                 <Form onSubmit={ _handleSubmit } >
                     <Form.Label>Dive No.</Form.Label>
                     <Form.Control 
@@ -185,4 +185,4 @@ const New_Entry = (props) => {
     )
 };
 
-export default New_Entry;
+export default New_Dive;

@@ -20,66 +20,70 @@ const Show = (props) => {
     console.log(dive)
 
     return (
-        <Table striped bordered hover>
-            <tbody>
-                <tr>
-                <th>Dive Number</th>
-                <td>{dive.dive_number}</td>
-                </tr>
-                <tr>
-                <th>Dive Date</th>
-                <td>{dive.date}</td>
-                </tr>
-                <tr>
-                <th>Dive Site</th>
-                <td>{dive.dive_site}</td>
-                </tr>
-                <tr>
-                <th>Max Depth</th>
-                <td>{dive.max_depth} m</td>
-                </tr>
-                <tr>
-                <th>Bottom Time</th>
-                <td>{dive.bottom_time} minutes</td>
-                </tr>
-                <tr>
-                <th>Dive Type</th>
-                <td>{dive.dive_type}</td>
-                </tr>
-                <tr>
-                <th>Weather</th>
-                <td>{dive.weather}</td>
-                </tr>
-                <tr>
-                <th>Water Conditions</th>
-                <td>{dive.water_conditions}</td>
-                </tr>
-                <tr>
-                <th>Water Temperature</th>
-                <td>{dive.water_temperature}</td>
-                </tr>
-                <tr>
-                <th>Body of Water</th>
-                <td>{dive.body_of_water}</td>
-                </tr>
-                <tr>
-                <th>Equipment</th>
-                <td>{dive.equipment}</td>
-                </tr>
-                <tr>
-                <th>Dive Buddy</th>
-                <td>{dive.dive_buddy}</td>
-                </tr>
-                <tr>
-                <th>Overall Feeling</th>
-                <td>{dive.overall_feeling}</td>
-                </tr>
-                <tr>
-                <th>Dive Company</th>
-                <td>{dive.dive_company}</td>
-                </tr>
-            </tbody>
-        </Table>
+        <div>
+            <Table striped bordered hover>
+                <tbody>
+                    <tr>
+                    <th>Dive Number</th>
+                    <td>{dive.dive_number}</td>
+                    </tr>
+                    <tr>
+                    <th>Dive Date</th>
+                    <td>{dive.date}</td>
+                    </tr>
+                    <tr>
+                    <th>Dive Site</th>
+                    <td>{dive.dive_site}</td>
+                    </tr>
+                    <tr>
+                    <th>Max Depth</th>
+                    <td>{dive.max_depth} m</td>
+                    </tr>
+                    <tr>
+                    <th>Bottom Time</th>
+                    <td>{dive.bottom_time} minutes</td>
+                    </tr>
+                    <tr>
+                    <th>Dive Type</th>
+                    <td>{dive.dive_type}</td>
+                    </tr>
+                    <tr>
+                    <th>Weather</th>
+                    <td>{dive.weather}</td>
+                    </tr>
+                    <tr>
+                    <th>Water Conditions</th>
+                    <td>{dive.water_conditions}</td>
+                    </tr>
+                    <tr>
+                    <th>Water Temperature</th>
+                    <td>{dive.water_temperature}</td>
+                    </tr>
+                    <tr>
+                    <th>Body of Water</th>
+                    <td>{dive.body_of_water}</td>
+                    </tr>
+                    <tr>
+                    <th>Equipment</th>
+                    <td>{dive.equipment}</td>
+                    </tr>
+                    <tr>
+                    <th>Dive Buddy</th>
+                    <td>{dive.dive_buddy}</td>
+                    </tr>
+                    <tr>
+                    <th>Overall Feeling</th>
+                    <td>{dive.overall_feeling}</td>
+                    </tr>
+                    <tr>
+                    <th>Dive Company</th>
+                    <td>{dive.dive_company}</td>
+                    </tr>
+                </tbody>
+            </Table>
+            <Link to={`/update/${params.diveId}`}>Edit Dive</Link>
+        </div>
+    
     )
 }
 

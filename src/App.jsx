@@ -1,10 +1,10 @@
 import CRUDTesting from "./components/CRUDTesting"
 import Login from "./components/Login";
 import User_Home_Page from "./components/User_Home_Page";
-import New_Entry from "./components/New_Entry";
+import New_Dive from "./components/New_Dive";
 import Index from "./components/Index";
 import Show from "./components/Show";
-import Update from "./components/Update";
+import Update_Dive from "./components/Update_dive";
 import APItest from "./components/API-Test";
 import { useState, useEffect } from 'react'
 
@@ -32,14 +32,6 @@ function App() {
 
 //////////////////////// CRUD /////////////////////////
 
-////// Show a specific dive
-
-
-// const params = useParams();
-// let diveId = params.diveId
-// console.log(params)
-
-
 ////// Show all of a user's dives
 
 const [ userDives, setUserDives ] = useState([])
@@ -49,7 +41,6 @@ const [ userDives, setUserDives ] = useState([])
         .from('Dive_Log')
         .select()
         .eq('user_id', user.id)
-    console.log("Dive Data: " + data)
     setUserDives(data)
   }
 
@@ -60,7 +51,7 @@ const [ userDives, setUserDives ] = useState([])
 ////// Add to dive log
 
 async function addDive(diveLogObject) {
-  const { data } = await supabase
+  const { data, error } = await supabase
       .from('Dive_Log')
       .insert({
           dive_number: diveLogObject.diveNum,
@@ -80,8 +71,59 @@ async function addDive(diveLogObject) {
           user_id: diveLogObject.user_id
       })
 
+      if (error) {
+        console.log(error)
+      }
+
       getUserDives()
 
+}
+
+////// Update a dive
+
+async function updateDive(diveLogObject) {
+  const { data, error } = await supabase
+      .from('Dive_Log')
+      .update({
+          dive_number: diveLogObject.diveNum,
+          date: diveLogObject.date,
+          dive_site: diveLogObject.diveSite,
+          max_depth: diveLogObject.maxDepth,
+          bottom_time: diveLogObject.bottomTime,
+          dive_type: diveLogObject.diveType,
+          weather: diveLogObject.weather,
+          water_conditions: diveLogObject.waterConditions,
+          water_temperature: diveLogObject.waterTemperature,
+          body_of_water: diveLogObject.bodyOfWater,
+          equipment: diveLogObject.equipment,
+          dive_buddy: diveLogObject.buddy,
+          dive_company: diveLogObject.diveCompany,
+          overall_feeling: diveLogObject.overallFeeling,
+          user_id: diveLogObject.user_id
+      })
+      .eq('id', diveLogObject.id)
+  
+      getUserDives()
+
+      if (error) {
+        console.log(error)
+      }
+
+}
+
+////// Delete a dive
+
+async function deleteDive(diveId) {
+  const { data, error } = await supabase
+      .from('Dive_Log')
+      .delete()
+      .eq('id', diveId)
+
+      getUserDives()
+
+      if (error) {
+        console.log(error)
+      }
 }
 
 //////////////////////// CRUD /////////////////////////
@@ -93,12 +135,11 @@ async function addDive(diveLogObject) {
       <Navbar />
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/crudtest" element={<CRUDTesting />} />
         <Route path="/userhome" element={<User_Home_Page />} />
-        <Route path="/newentry" element={<New_Entry onSubmit={ addDive }/>} />
+        <Route path="/log-dive" element={<New_Dive onSubmit={ addDive }/>} />
         <Route path="/Dives" element={<Index userDives={ userDives } />} />
         <Route path="/Dives/:diveId" element={<Show userDives={ userDives }/>} />
-        <Route path="/update" element={<Update />} />
+        <Route path="/update/:diveId" element={<Update_Dive userDives={ userDives }  updateDive={ updateDive } deleteDive={ deleteDive } />} />
         <Route path="/apitest" element={<APItest />} />
       </Routes>
     </Router>
