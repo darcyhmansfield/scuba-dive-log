@@ -5,22 +5,27 @@ import {
 } from '@supabase/auth-ui-shared'
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '/src/config/supabaseClient'
+import { useEffect } from 'react';
 
 const Login = () => {
 
   const navigate = useNavigate();
+
   
-  supabase.auth.onAuthStateChange(async (event) => {
-    if (event === "SIGNED_IN") {
-      console.log(event)
-      // forward to success URL
-      console.log("navigating");
-      navigate("/userhome");
-    } else {
-      // forward to localhost
-      navigate("/");
-    }
-  });
+  
+  useEffect(() => {
+    supabase.auth.onAuthStateChange(async (event) => {
+      if (event === "SIGNED_IN") {
+        console.log(event)
+        // forward to success URL
+        console.log("navigating");
+        navigate("/userhome");
+      } else {
+        // forward to localhost
+        navigate("/");
+      }
+    })
+  }, [])
 
   return (
     <div>
