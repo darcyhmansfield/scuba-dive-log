@@ -43,6 +43,7 @@ const Show = (props) => {
                     <th>Bottom Time</th>
                     <td>{dive.bottom_time} minutes</td>
                     </tr>
+                
                     <tr>
                     <th>Dive Type</th>
                     <td>{dive.dive_type}</td>

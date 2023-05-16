@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import SearchBar from './Search_Bar';
 
 // Defining a functional component called Navbar
 const Navbar = () => {
@@ -20,7 +21,7 @@ const Navbar = () => {
         </li>
       {/* The fourth list item contains a link to the search page */}
         <li>
-          <Link to="/apitest">🔎</Link>
+          <SearchBar />
         </li>
       </ul>
     </nav>
