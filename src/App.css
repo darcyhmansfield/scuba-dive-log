@@ -170,6 +170,12 @@ body {
   font-family: 'Karla', sans-serif;
 }
 
+#logo {
+  max-width: 150px;
+  background-color: rgba(220,220,220,0.8);
+  border-radius: 5px;
+  margin: 1em;
+}
 
 
 

@@ -2,20 +2,34 @@ import { useParams } from 'react-router-dom'
 import Table from 'react-bootstrap/Table';
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react'
+import { supabase } from '../config/supabaseClient';
 
 
 const Show = (props) => {
 
     const [ dive, setDive ] = useState({})
-    const [ userDives, setUserDives ] = useState([])
     const params = useParams();
+    const [ userDives, setUserDives ] = useState([])
+
+    async function getUserDives() {
+        const { data } = await supabase
+            .from('Dive_Log')
+            .select()
+            .eq('user_id', props.session.user.id)
+        setUserDives(data)
+    }
 
     useEffect(() => { 
-        let diveQuery = props.userDives.find(dive => dive.id == params.diveId)
-        setUserDives(props.userDives)
-        setDive(diveQuery)
+        getUserDives()
+    }, []);
 
-    }, [])
+    console.log(userDives)
+
+    useEffect(() => { 
+        let diveQuery = userDives.find(dive => dive.id == params.diveId)
+        console.log(userDives)
+        setDive(diveQuery)
+    }, [userDives])
 
     console.log(dive)
 
