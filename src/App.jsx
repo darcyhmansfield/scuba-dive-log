@@ -128,7 +128,7 @@ async function deleteDive(diveId) {
 
 //////////////////////// CRUD /////////////////////////
 
-
+//////////////////////// Dive Site API //////////////////////////
 
 const [results, setResults] = useState({});
 
@@ -157,12 +157,15 @@ const Search = (q) => {
   });
 }
 
+//////////////////////// Dive Site API //////////////////////////
 
 //////////////////////// Routes /////////////////////////
 
   return (
+    <div className="container">
     <Router>
       <Navbar Search={ Search } />
+      
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/userhome" element={<User_Home_Page />} />
@@ -172,7 +175,9 @@ const Search = (q) => {
         <Route path="/update/:diveId" element={<Update_Dive userDives={ userDives }  updateDive={ updateDive } deleteDive={ deleteDive } />} />
         <Route path="/divesite-search" element={<Search_Results results={ results }/> } />
       </Routes>
+      
     </Router>
+    </div>
   )
 }
 
