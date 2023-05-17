@@ -1,4 +1,4 @@
-# Project1 - Dive Track
+# Project 2 - Dive Track
 
 ## Project Overview
 
