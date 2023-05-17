@@ -22,10 +22,11 @@ const Navbar = (props) => {
   // This component returns a navigation bar with links to various pages
   return (
     <nav className="nav">
+      <h1 id='logo'>Dive Track</h1>
       <ul>
         {/* The first list item links to the homepage */}
         <li>
-          <Link to="/">🏠</Link>
+          <Link to="/">Home</Link>
         </li>
         {/* The second list item links to a page to log a new dive */}
         <li>

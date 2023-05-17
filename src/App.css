@@ -1,5 +1,6 @@
 /* Font import */
-@import url('https://fonts.cdnfonts.com/css/ocean');
+/* @import url('https://fonts.cdnfonts.com/css/ocean'); */
+@import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
 
 #root {
   max-width: 1280px;
@@ -7,6 +8,53 @@
   padding: 2rem;
   text-align: center;
 }
+
+@media (max-width: 500px) {
+  #logo  {
+    font-size: 34px;
+  }
+}
+
+
+/* DIVE LOG FORM */
+
+.divelog-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0d0d8b70;
+  padding: 1em;
+  border: 2px solid #0d0d8b70;
+  border-radius: 1em;
+  color: white;
+  margin-top: 5em;
+}
+
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-gap: 10px;
+
+}
+
+.label {
+  grid-column: 1;
+  align-self: center;
+  font-size: 20px;
+}
+
+.input {
+  grid-column: 2;
+  width: 100%;
+  background-color: #3034deb5;
+  border-radius: 8px;
+}
+
+.input {
+  width: 100%;
+}
+
+/* ^ DIVE LOG FORM ^ */ 
 
 /* Nav bar */
 
@@ -28,8 +76,8 @@ body {
   left: 0;
    /* Makes the navigation bar span the full width of the viewport */
   width: 100%;
-    /* Sets the background color to dark gray */
-  background-color: #333;
+    /* Sets the background color to blue */
+  background-color: #0868c3;
     /* Sets the font color to white */
   color: white;
     /* Sets the display property to flex */
@@ -38,8 +86,7 @@ body {
   justify-content: space-between;
     /* Aligns items along the cross axis to stretch them vertically */
   align-items: stretch;
-    /* Sets the gap between flex items to 2rem */
-  gap: 2rem;
+ 
     /* Adds padding to the left and right of the navigation bar */
   padding: 0 1rem;
 }
@@ -73,13 +120,15 @@ body {
   /* Aligns items along the cross axis to center them vertically */
   align-items: center;
   /* Adds padding to the top and bottom of the link */
-  padding: .25rem;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 /* Styles for the navigation bar list items on hover */
 .nav li:hover {
   /* Sets the background color to light gray */
-  background-color: #777;
+  color: black;
+  
 }
 
 .nav form {
@@ -96,15 +145,144 @@ body {
 
 /* Setting the background of the body to an animated image of the ocean */
 body {
-  background-image: url('images/ocean.jpeg');
+  background-image: url('images/ocean-background-vector.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+
 }
+
+/* .container {
+  width: 80%;
+  /* background-image: url('images/ocean.jpeg'); */
+   /* margin: 0 auto;  */
+  /* justify-content: center;  */
+
 
 /* Specify font family */
 * {
-  font-family: 'OCEAN', sans-serif;
+  /* font-family: 'OCEAN', sans-serif; */
+  font-family: 'Karla', sans-serif;
+}
+
+.divelog-index-row:hover {
+  background-color: #0f0fd198;
+}
+
+/* Dive Log Index Design */
+
+h1 {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+table {
+  width: 68%;
+  table-layout: fixed;
+  background-color: #0d0d8b70;
+  margin: 0 auto;
+  border-radius: 1em;
+}
+
+.tbl-header {
+  background-color: rgba(255,255,255,0.3);
+ }
+
+.tbl-content {
+  height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+th{
+  font-size: 30px;
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 18px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 16px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+
+@media (max-width: 700px) {
+  th {
+    font-size: 12px;
+  }
+
+  td {
+    font-size: 12px; /* Adjust the font size as needed */
+  }
+
+
+}
+
+/* ^ Dive Log Index Design ^ */
+
+
+/* Submit/Update/Delete Log Button */
+
+.button-container {
+  display: flex;
+  gap: 10px;
 }
 
 
+.submit-button {
+  flex: 1;
+  margin-top: 10px;
+  position: relative;
+  left: 101px;
+  background-color: #0a6bff;
+  border-radius: 4px;
+  border: 0;
+  box-shadow: rgba(1,60,136,.5) 0 -1px 3px 0 inset,rgba(0,44,97,.1) 0 3px 6px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  /* display: inherit; */
+  font-family: "Space Grotesk",-apple-system,system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  height: 56px;
+  min-width: 120px;
+  padding: 16px 20px;
+  text-align: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  transition: all .2s cubic-bezier(.22, .61, .36, 1);
+}
 
+.submit-button:hover {
+  background-color: #065dd8;
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .submit-button {
+    padding: 16px 44px;
+    min-width: 150px;
+  }
+}
+
+#delete-button {
+  background-color: #c70d0de8;
+  padding: 0;
+  left: 101px;
+}
+
+/* ^ Submit/Update/Delete Log Button ^ */

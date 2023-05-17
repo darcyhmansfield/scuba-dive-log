@@ -1,12 +1,19 @@
 import Table from 'react-bootstrap/Table';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Index = (props) => {
 
+    const navigate = useNavigate()
+
     console.log(props.userDives)
 
+
+    const _handleRowClick = (diveId) => {
+        navigate(`/Dives/${diveId}`);
+    }
+
     return (
-        <Table striped bordered hover>
+        <table>
         <thead>
           <tr>
             <th>Dive No.</th>
@@ -19,14 +26,15 @@ const Index = (props) => {
         <tbody>
             { props.userDives ? (
                 props.userDives.map((dive) => (
-                
-                    <tr key={dive.id}> 
-                        <td><Link to={ `/Dives/${dive.id}` }>{ dive.dive_number }</Link></td>
+                    // <Link to={ `/Dives/${dive.id}` }>
+                    <tr key={dive.id} onClick = { () => _handleRowClick(dive.id) } className='divelog-index-row'> 
+                        <td>{ dive.dive_number }</td>
                         <td>{ dive.date }</td>
                         <td>{ dive.dive_site }</td>
                         <td>{ dive.max_depth } m</td>
-                        <td>{ dive.bottom_time } minutes</td>   
+                        <td>{ dive.bottom_time } mins</td>   
                     </tr>
+                  
                 ))
             ) : ( 
                 <tr>
@@ -34,7 +42,7 @@ const Index = (props) => {
                 </tr>
             )}
         </tbody>
-      </Table>
+      </table>
   
     );
 };

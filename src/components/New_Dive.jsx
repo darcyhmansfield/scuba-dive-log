@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '/src/config/supabaseClient';
-import "bootstrap/dist/css/bootstrap.min.css";
-import { Container, Form,Button } from 'react-bootstrap';
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import { Container, Form,Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 const New_Dive = (props) => {
@@ -97,89 +97,89 @@ const New_Dive = (props) => {
     /////////////////////// Displayed Form
 
     return (
-        <div>
-            <Container>
-                <h3>Log Dive</h3>
-                <Form onSubmit={ _handleSubmit } >
-                    <Form.Label>Dive No.</Form.Label>
-                    <Form.Control 
+        <div className='divelog-form'>
+            
+                <h1>Log Dive</h1>
+                <form onSubmit={ _handleSubmit } >
+                    <label className='label'>Dive No.</label>
+                    <input className='input'
                         type='number'
                         onChange={(event) => setDiveNum(event.target.value)}
                         required
                     />
-                    <Form.Label>Date</Form.Label>
-                    <Form.Control 
+                    <label className='label'>Date</label>
+                    <input className='input'
                         type='date'
                         onChange={(event) => setDate(event.target.value)}
                         required
                     />
-                    <Form.Label>Dive Site</Form.Label>
-                    <Form.Control 
+                    <label className='label'>Dive Site</label>
+                    <input className='input'
                         type='text'
                         onChange={(event) => setDiveSite(event.target.value)}
                         required
                     />
-                    <Form.Label>Max Depth</Form.Label>
-                    <Form.Control 
+                    <label className='label'>Max Depth</label>
+                    <input className='input'
                         type='number'
                         onChange={(event) => setMaxDepth(event.target.value)}
                         required
                     />
-                    <Form.Label>Bottom Time</Form.Label>
-                    <Form.Control 
+                    <label className='label'>Bottom Time</label>
+                    <input className='input'
                         type='number'
                         onChange={(event) => setBottomTime(event.target.value)}
                         required
                     />
-                    <Form.Label>Dive Type</Form.Label>
-                    <Form.Control 
+                    <label className='label'>Dive Type</label>
+                    <input className='input'
                         type='text'
                         onChange={(event) => setDiveType(event.target.value)}
                     />
-                    <Form.Label>Weather</Form.Label>
-                    <Form.Control 
+                    <label className='label'>Weather</label>
+                    <input className='input'
                         type='text'
                         onChange={(event) => setWeather(event.target.value)}
                     />
-                    <Form.Label>Water Conditions</Form.Label>
-                    <Form.Control 
+                    <label className='label'>Water Conditions</label>
+                    <input className='input'
                         type='text'
                         onChange={(event) => setWaterConditions(event.target.value)}
                     />
-                    <Form.Label>Water Temperature</Form.Label>
-                    <Form.Control 
+                    <label className='label'>Water Temperature</label>
+                    <input className='input'
                         type='number'
                         onChange={(event) => setWaterTemperature(event.target.value)}
                     />
-                    <Form.Label>Body Of Water</Form.Label>
-                    <Form.Control 
+                    <label className='label'>Body Of Water</label>
+                    <input className='input'
                         type='text'
                         onChange={(event) => setBodyOfWater(event.target.value)}
                     />
-                    <Form.Label>Equipment</Form.Label>
-                    <Form.Control 
+                    <label className='label'>Equipment</label>
+                    <input className='input'
                         type='text'
                         onChange={(event) => setEquipment(event.target.value)}
                     />
-                    <Form.Label>Dive Buddy</Form.Label>
-                    <Form.Control 
+                    <label className='label'>Dive Buddy</label>
+                    <input className='input'
                         type='text'
                         onChange={(event) => setBuddy(event.target.value)}
                     />
-                    <Form.Label>Dive Company</Form.Label>
-                    <Form.Control 
+                    <label className='label'>Dive Company</label>
+                    <input className='input'
                         type='text'
                         onChange={(event) => setDiveCompany(event.target.value)}
                     />
-                    <Form.Label>Overall Feeling</Form.Label>
-                    <Form.Control 
-                        as='textarea'
+                    <label className='label'>Overall Feeling</label>
+                    <textarea className='input'
+                        type='textarea'
                         rows={4}
                         onChange={(event) => setOverallFeeling(event.target.value)}
                     />
-                    <Button type='submit'>Log Dive</Button>
-                </Form>
-            </Container>
+                    <button className='submit-button' type='submit'>Log Dive</button>
+                </form>
+            
         </div>
     
     )
