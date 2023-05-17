@@ -11,8 +11,6 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  
-  
   useEffect(() => {
     supabase.auth.onAuthStateChange(async (event) => {
       if (event === "SIGNED_IN") {
