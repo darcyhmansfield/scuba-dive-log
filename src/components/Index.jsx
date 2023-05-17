@@ -21,8 +21,13 @@ const Index = (props) => {
 
     console.log(userDives)
 
+
+    const _handleRowClick = (diveId) => {
+        navigate(`/Dives/${diveId}`);
+    }
+
     return (
-        <Table striped bordered hover>
+        <table>
         <thead>
           <tr>
             <th>Dive No.</th>
@@ -41,8 +46,9 @@ const Index = (props) => {
                         <td>{ dive.date }</td>
                         <td>{ dive.dive_site }</td>
                         <td>{ dive.max_depth } m</td>
-                        <td>{ dive.bottom_time } minutes</td>   
+                        <td>{ dive.bottom_time } mins</td>   
                     </tr>
+                  
                 ))
             ) : ( 
                 <tr>
@@ -50,7 +56,7 @@ const Index = (props) => {
                 </tr>
             )}
         </tbody>
-      </Table>
+      </table>
   
     );
 };

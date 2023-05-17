@@ -222,16 +222,17 @@ const Update_Dive = (props) => {
                             value={ diveCompany }
                         />
                         <label className='label'>Overall Feeling</label>
-                         <input className='input' 
+                        <textarea className='input' 
                             as='textarea'
                             rows={4}
                             onChange={(event) => setOverallFeeling(event.target.value)}
                             value={ overallFeeling }
                         />
+                        <div className="button-container">
                         <button className='submit-button'type='submit'>Update</button>
+                        <button className='submit-button' id='delete-button' onClick={ _handleDelete }>Delete Dive</button>
+                        </div>
                     </form>
-                
-                <button className='delete-button' onClick={ _handleDelete }>Delete Dive</button>
             </div>
         
         )
