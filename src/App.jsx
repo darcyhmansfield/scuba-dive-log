@@ -142,7 +142,7 @@ const Search = (q) => {
       method: 'GET',
       url: 'https://world-scuba-diving-sites-api.p.rapidapi.com/api/divesite',
       params: {
-          country: q
+          country: q,
         },    
       headers: {
           'X-RapidAPI-Key': '5f19ae380fmsh4d27eefa4a39e09p1e7e57jsne8215947bc70',
@@ -151,11 +151,10 @@ const Search = (q) => {
   };
 
   axios.request(options).then((response) => {
+      console.log('Response:', response.data);
       setResults(response.data);
-      console.log(response.data)
-      console.log(results)
   });
-}
+};
 
 
 //////////////////////// Routes /////////////////////////

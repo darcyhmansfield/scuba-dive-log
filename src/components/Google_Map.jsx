@@ -1,14 +1,11 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
-export default function GMap(props) {
-
-  console.log(props)
-  
-  const containerStyle = {width:'400px', height:'400px'};
+export default function GMap({ results }) {
+  const containerStyle = { width: '400px', height: '400px' };
   const center = { lat: 44, lng: -80 };
-  console.log(center)
-
+  console.log(center);
+  
   const { isLoaded } = useJsApiLoader({
     id:'google-map-script',
     googleMapsApiKey: 'AIzaSyCL93rqXBVP-U1Z9B0TgJNETvgf8MfWpHA'
@@ -17,15 +14,32 @@ export default function GMap(props) {
   console.log(isLoaded);
 
   const [map, setMap] = useState(null);
+  const [markers, setMarkers] = useState([]);
 
-  const onLoad = React.useCallback(function callback(map) {
+  useEffect(() => {
+    if (results && results.data) {
+      const diveSites = results.data;
+      console.log(diveSites);
+
+      // Create an array of markers based on the dive sites
+      const markersArray = diveSites.map(diveSite => ({
+        position: { lat: diveSite.latitude, lng: diveSite.longitude },
+        name: diveSite.name
+      }));
+
+      setMarkers(markersArray);
+    }
+  }, [results]);
+
+  const onLoad = useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center);
     map.fitBounds(bounds);
 
     setMap(map)
+    console.log(bounds);
   }, [])
 
-  const onUnmount = React.useCallback(function callback(map) {
+  const onUnmount = useCallback(function callback(map) {
     setMap(null)
   }, [])
 
@@ -36,7 +50,10 @@ export default function GMap(props) {
       zoom={8}
       onLoad={onLoad}
       onUnmount={onUnmount}
-    ><></>
+    >
+      {markers.map(marker => (
+        <Marker key={marker.name} position={marker.position} />
+      ))}
     </GoogleMap>
-  ) : <></>
+  ) : null;
 }
