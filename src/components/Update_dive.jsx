@@ -4,10 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Form,Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
-import Table from 'react-bootstrap/Table';
-import { Link } from "react-router-dom";
-
-
 
 const Update_Dive = (props) => {
 

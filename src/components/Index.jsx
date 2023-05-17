@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react'
-import { supabase } from '/src/config/supabaseClient'
 import Table from 'react-bootstrap/Table';
 import { Link } from "react-router-dom";
 

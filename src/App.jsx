@@ -4,8 +4,9 @@ import New_Dive from "./components/New_Dive";
 import Index from "./components/Index";
 import Show from "./components/Show";
 import Update_Dive from "./components/Update_dive";
-import APItest from "./components/API-Test";
+import Search_Results from "./components/Search_Results";
 import { useState, useEffect } from 'react'
+import axios from 'axios';
 
 import { supabase } from '/src/config/supabaseClient'
 import Navbar from "./components/Navbar";
@@ -43,8 +44,8 @@ const [ userDives, setUserDives ] = useState([])
     setUserDives(data)
   }
 
-  useEffect(() => { 
-    getUserDives()
+useEffect(() => { 
+  getUserDives()
 }, [user]);
 
 ////// Add to dive log
@@ -129,11 +130,44 @@ async function deleteDive(diveId) {
 
 
 
+const [results, setResults] = useState({});
+
+
+const Search = (q) => {
+
+  console.log("Searching");
+
+  const options = {
+
+      method: 'GET',
+      url: 'https://world-scuba-diving-sites-api.p.rapidapi.com/api/divesite',
+      params: {
+          country: q
+        },    
+      headers: {
+          'X-RapidAPI-Key': '5f19ae380fmsh4d27eefa4a39e09p1e7e57jsne8215947bc70',
+          'X-RapidAPI-Host': 'world-scuba-diving-sites-api.p.rapidapi.com'
+      }
+  };
+
+  axios.request(options).then((response) => {
+      setResults(response.data);
+      console.log(response.data)
+      console.log(results)
+  });
+}
+
+// useEffect(() => { 
+
+// }, [results]);
+
+
+
 //////////////////////// Routes /////////////////////////
 
   return (
     <Router>
-      <Navbar />
+      <Navbar Search={ Search } />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/userhome" element={<User_Home_Page />} />
@@ -141,7 +175,7 @@ async function deleteDive(diveId) {
         <Route path="/Dives" element={<Index userDives={ userDives } />} />
         <Route path="/Dives/:diveId" element={<Show userDives={ userDives }/>} />
         <Route path="/update/:diveId" element={<Update_Dive userDives={ userDives }  updateDive={ updateDive } deleteDive={ deleteDive } />} />
-        <Route path="/apitest" element={<APItest />} />
+        <Route path="/divesite-search" element={<Search_Results results={ results }/> } />
       </Routes>
     </Router>
   )

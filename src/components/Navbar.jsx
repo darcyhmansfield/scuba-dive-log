@@ -1,8 +1,24 @@
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useState } from 'react';
 import SearchBar from './Search_Bar';
+import { useNavigate } from 'react-router-dom';
 
 // Defining a functional component called Navbar
-const Navbar = () => {
+const Navbar = (props) => {
+
+
+  const [results, setResults] = useState({});
+  const navigate = useNavigate()
+  
+
+  const _handleSearch = (q) => {
+
+      props.Search(q)
+      navigate('/divesite-search')
+  
+  }
+
   // This component returns a navigation bar with links to various pages
   return (
     <nav className="nav">
@@ -21,7 +37,7 @@ const Navbar = () => {
         </li>
       {/* The fourth list item contains a link to the search page */}
         <li>
-          <SearchBar />
+          <SearchBar onSubmit={ _handleSearch }/>
         </li>
       </ul>
     </nav>

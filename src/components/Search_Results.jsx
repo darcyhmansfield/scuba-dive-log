@@ -1,36 +1,39 @@
 
+import { useState, useEffect } from 'react';
 
-const SearchResults = (props) => {
+const Search_Results = ({results}) => {
 
-    // console.log(props.results.data[0].name)
+    useEffect(() => { 
+        // setResults(results)
+        console.log("In Use Effect: ", results)
+    }, [results]);
 
     return (
-        <table style={{ width: 500 }}>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Region</th>
-                    <th>Ocean</th>
-                </tr>
-            </thead>
-            <tbody>
-                {props.results.data.map((location) => (
+        <div>
+            {Object.keys(results).length > 0 && 
+            <table style={{ width: 500 }}>
+                <thead>
                     <tr>
-                        <td>{location.name.replace('&#039;',"'")}</td>
-                        <td>{location.region}</td>
-                        <td>{location.ocean}</td>
+                        <th>Name</th>
+                        <th>Region</th>
+                        <th>Ocean</th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    {results.data.map((location) => (
+                        <tr key={location.id}>
+                            <td>{location.name.replace('&#039;',"'")}</td>
+                            <td>{location.region}</td>
+                            <td>{location.ocean}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            }
+        </div>
+    );
+};
 
-        // <div>
-        //     {props.results.data.map((location) => (
-        //         <p>{location.name}</p>
+export default Search_Results;
 
-        //     ))}
-        // </div>
-    )
-}
 
-export default SearchResults
