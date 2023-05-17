@@ -1,3 +1,11 @@
+import { useState, useEffect } from 'react'
+import axios from 'axios';
+import { supabase } from '/src/config/supabaseClient'
+import Navbar from "./components/Navbar";
+import './App.css';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
+// import dotenv from 'dotenv';
+// dotenv.config();
 import Login from "./components/Login";
 import User_Home_Page from "./components/User_Home_Page";
 import New_Dive from "./components/New_Dive";
@@ -5,13 +13,6 @@ import Index from "./components/Index";
 import Show from "./components/Show";
 import Update_Dive from "./components/Update_dive";
 import Search_Results from "./components/Search_Results";
-import { useState, useEffect } from 'react'
-import axios from 'axios';
-
-import { supabase } from '/src/config/supabaseClient'
-import Navbar from "./components/Navbar";
-import './App.css';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom'
 
 function App() {
 

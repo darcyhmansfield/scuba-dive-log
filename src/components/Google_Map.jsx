@@ -1,17 +1,19 @@
 import React, { useState, useCallback } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
+import { mapsApiKey } from "../config/googleMapsClient";
 
 export default function GMap(props) {
 
-  console.log(props)
+  console.log(mapsApiKey);
+  console.log(props);
   
-  const containerStyle = {width:'400px', height:'400px'};
+  const containerStyle = {width:'100vw', height:'400px'};
   const center = { lat: 44, lng: -80 };
   console.log(center)
 
   const { isLoaded } = useJsApiLoader({
     id:'google-map-script',
-    googleMapsApiKey: 'AIzaSyCL93rqXBVP-U1Z9B0TgJNETvgf8MfWpHA'
+    googleMapsApiKey: mapsApiKey
   });
 
   console.log(isLoaded);
@@ -36,7 +38,7 @@ export default function GMap(props) {
       zoom={8}
       onLoad={onLoad}
       onUnmount={onUnmount}
-    ><></>
+    ><>      </>
     </GoogleMap>
   ) : <></>
 }
