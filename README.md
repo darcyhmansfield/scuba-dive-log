@@ -6,7 +6,7 @@ Building a full-stack web application in collaboration with Adam, Darcy and Josh
 
 ## Motivation (How & Why)
 
-Whilst there are many similar offerings to this one, none of them offer a simple enough user experience; it's often a highly complicated process to log an entry or to extract the information that one requires. Not to mention the fact that any good enough provider will often charge for access, so for the avid scuba-diver, they often have to resort to manual entries via spreadsheets for instance. 
+While there may be several comparable options available, none of them truly provide a user-friendly experience. Logging an entry or extracting the necessary information from these platforms often involves a convoluted and intricate process. Additionally, many reliable providers tend to charge for access, leaving passionate scuba divers no choice but to resort to manual entries using tools like spreadsheets.
 
 ### Tech/frameworks Used
 
@@ -16,31 +16,32 @@ Built with
 * CSS
 * React
 
-### Link to site
-
-This is [a link to our git repo](https://github.com/darcyhmansfield/scuba-dive-log).
-
 ### Features
 
-* You can input information into a form which will store the data regarding that single entry, which a user can then display or edit.  
-* You can view all dive log entries. 
-* You can also search for different dive sites based on a specific location which should render a map. 
+The application offers a streamlined experience where users can conveniently input information into a form, which will then store the data for that particular entry. These stored entries can be easily displayed or edited at any time.
+
+Furthermore, the platform allows users to access and view all dive log entries in a centralized manner, ensuring comprehensive visibility and organization.
+
+To enhance the exploration experience, the application also provides a search functionality. Users can search for dive sites based on specific locations, which will generate a corresponding map displaying the results. This feature enables users to effortlessly discover and navigate various dive sites of interest.
 
 ### Approach Taken
 
-* Started off by planning the layout of the website and drawing a mockup of the different models and how they would interoperate. 
-* We setup a Git repository for the project. 
-* Created the skeleton document for the React app and imported all of the components to the App.jsx file.
+* Commenced by devising a website layout plan and crafting a mockup to illustrate the interaction between various models.
+* Established a Git repository specifically for the project to facilitate collaboration and version control.
+* Generated the initial structure of the React application by creating a skeletal document, and proceeded to import all the necessary components into the App.jsx file.
 * Created the database using Supabase for the back-end.
-* Figuring out how to link the database to the front-end. 
-* Worked on integrating the different APIs.
-* Styled the website towards the end.
+* Expended efforts in determining the optimal approach to connect the database with the front-end.
+* Dedicated time to seamlessly integrating multiple APIs into the application's functionality.
+* Concluded the development phase by refining the website's appearance and applying stylistic enhancements.
 
 
 ### Difficulties encountered when building this
 
-The main difficulties revolved around the use of Supabase as a back-end as it's a novelty for our group and connecting it to React was difficult. Additionally, the integration of the APIs was demanding and getting that working took a lot of effort. 
+* The primary challenges we encountered centered around the utilization of Supabase as our back-end. Since it was a relatively new tool for our group, connecting it to React posed considerable difficulties. Moreover, the integration of various APIs proved to be demanding, requiring substantial effort to achieve a functional implementation.
 
+* Another significant endeavor involved configuring the search query to execute from the navigation bar and displaying the API response on a separate page. 
+
+* Implementing user functionality, including sign-up and sign-in features, proved to be a considerable challenge as well.
 
 ### How to use?
 
