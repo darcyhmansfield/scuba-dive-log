@@ -121,112 +121,117 @@ const Update_Dive = (props) => {
         }
 
         const _handleDelete = () => {
-            props.deleteDive(dive.id)
-            navigate('/Dives')
+            const confirmDelete = window.confirm(
+                'Are you sure you want to delete this dive?'
+              );
+              if (confirmDelete) {
+                props.deleteDive(dive.id);
+                navigate('/Dives');
+              }
         }
 
     
         /////////////////////// Displayed Form
     
         return (
-            <div>
-                <Container>
-                    <h3>Update Dive</h3>
-                    <Form onSubmit={ _handleSubmitUpdate } >
-                        <Form.Label>Dive No.</Form.Label>
-                        <Form.Control 
+            <div className='divelog-form'>
+        
+                    <h1>Update Dive</h1>
+                    <form onSubmit={ _handleSubmitUpdate } >
+                    <label className='label'>Dive No.</label>
+                         <input className='input' 
                             type='number'
                             onChange={(event) => setDiveNum(event.target.value)}
                             value={ diveNum }
                             required
                         />
-                        <Form.Label>Date</Form.Label>
-                        <Form.Control 
+                        <label className='label'>Date</label>
+                         <input className='input' 
                             type='date'
                             onChange={(event) => setDate(event.target.value)}
                             value={ date }
                             required
                         />
-                        <Form.Label>Dive Site</Form.Label>
-                        <Form.Control 
+                        <label className='label'>Dive Site</label>
+                         <input className='input' 
                             type='text'
                             onChange={(event) => setDiveSite(event.target.value)}
                             value={ diveSite }
                             required
                         />
-                        <Form.Label>Max Depth</Form.Label>
-                        <Form.Control 
+                        <label className='label'>Max Depth</label>
+                         <input className='input' 
                             type='number'
                             onChange={(event) => setMaxDepth(event.target.value)}
                             value={ maxDepth }
                             required
                         />
-                        <Form.Label>Bottom Time</Form.Label>
-                        <Form.Control 
+                        <label className='label'>Bottom Time</label>
+                         <input className='input' 
                             type='number'
                             onChange={(event) => setBottomTime(event.target.value)}
                             value={ bottomTime }
                             required
                         />
-                        <Form.Label>Dive Type</Form.Label>
-                        <Form.Control 
+                        <label className='label'>Dive Type</label>
+                         <input className='input' 
                             type='text'
                             onChange={(event) => setDiveType(event.target.value)}
                             value={ diveType }
                         />
-                        <Form.Label>Weather</Form.Label>
-                        <Form.Control 
+                        <label className='label'>Weather</label>
+                         <input className='input' 
                             type='text'
                             onChange={(event) => setWeather(event.target.value)}
                             value={ weather }
                         />
-                        <Form.Label>Water Conditions</Form.Label>
-                        <Form.Control 
+                        <label className='label'>Water Conditions</label>
+                         <input className='input' 
                             type='text'
                             onChange={(event) => setWaterConditions(event.target.value)}
                             value={ waterConditions }
                         />
-                        <Form.Label>Water Temperature</Form.Label>
-                        <Form.Control 
+                        <label className='label'>Water Temperature</label>
+                         <input className='input' 
                             type='number'
                             onChange={(event) => setWaterTemperature(event.target.value)}
                             value={ waterTemperature }
                         />
-                        <Form.Label>Body Of Water</Form.Label>
-                        <Form.Control 
+                        <label className='label'>Body Of Water</label>
+                         <input className='input' 
                             type='text'
                             onChange={(event) => setBodyOfWater(event.target.value)}
                             value={ bodyOfWater }
                         />
-                        <Form.Label>Equipment</Form.Label>
-                        <Form.Control 
+                        <label className='label'>Equipment</label>
+                         <input className='input' 
                             type='text'
                             onChange={(event) => setEquipment(event.target.value)}
                             value={ equipment }
                         />
-                        <Form.Label>Dive Buddy</Form.Label>
-                        <Form.Control 
+                        <label className='label'>Dive Buddy</label>
+                         <input className='input' 
                             type='text'
                             onChange={(event) => setBuddy(event.target.value)}
                             value={ buddy }
                         />
-                        <Form.Label>Dive Company</Form.Label>
-                        <Form.Control 
+                        <label className='label'>Dive Company</label>
+                         <input className='input' 
                             type='text'
                             onChange={(event) => setDiveCompany(event.target.value)}
                             value={ diveCompany }
                         />
-                        <Form.Label>Overall Feeling</Form.Label>
-                        <Form.Control 
+                        <label className='label'>Overall Feeling</label>
+                         <input className='input' 
                             as='textarea'
                             rows={4}
                             onChange={(event) => setOverallFeeling(event.target.value)}
                             value={ overallFeeling }
                         />
-                        <Button type='submit'>Update</Button>
-                    </Form>
-                </Container>
-                <Button onClick={ _handleDelete }>Delete</Button>
+                        <button className='submit-button'type='submit'>Update</button>
+                    </form>
+                
+                <button className='delete-button' onClick={ _handleDelete }>Delete Dive</button>
             </div>
         
         )

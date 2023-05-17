@@ -22,6 +22,7 @@ const Navbar = (props) => {
   // This component returns a navigation bar with links to various pages
   return (
     <nav className="nav">
+      <h1>Dive Track</h1>
       <ul>
         {/* The first list item links to the homepage */}
         <li>
