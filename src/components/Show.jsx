@@ -50,11 +50,11 @@ const Show = (props) => {
                     <td>{userDive[0].dive_site}</td>
                     </tr>
                     <tr className='show-row-index'>
-                    <th>Max Depth</th>
+                    <th>Max Depth (m)</th>
                     <td>{userDive[0].max_depth} m</td>
                     </tr>
                     <tr className='show-row-index'>
-                    <th>Bottom Time</th>
+                    <th>Bottom Time (mins)</th>
                     <td>{userDive[0].bottom_time} minutes</td>
                     </tr>
 
@@ -81,7 +81,7 @@ const Show = (props) => {
 
                     {userDive[0].water_temperature && 
                     <tr className='show-row-index'>
-                    <th>Water Temperature</th>
+                    <th>Water Temperature (°C)</th>
                     <td>{userDive[0].water_temperature}</td>
                     </tr>
                     }

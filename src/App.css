@@ -306,7 +306,7 @@ td {
 }
 
 .submit-button:hover {
-  background-color: #0069fc;
+  background-color: #065dd8;
   transform: translateY(-2px);
 }
 
@@ -335,7 +335,7 @@ td {
 }
 
 #edit-button:hover {
-  background-color: #0069fc;
+  background-color: #065dd8;
   transform: translateY(-2px);
 }
 

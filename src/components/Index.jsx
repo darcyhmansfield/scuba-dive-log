@@ -28,7 +28,7 @@ const Index = (props) => {
     }
 
     return (
-        <table>
+        <table class='sortable'>
         <thead>
           <tr>
             <th>Dive No.</th>

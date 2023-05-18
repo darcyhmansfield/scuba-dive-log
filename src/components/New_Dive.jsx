@@ -88,6 +88,7 @@ async function _handleSubmit(event) {
                     <input className='input'
                         type='number'
                         onChange={(event) => setDiveNum(event.target.value)}
+                        onWheel={(event) => event.target.blur()}
                         required
                     />
                     <label className='label'>Date</label>
@@ -102,16 +103,18 @@ async function _handleSubmit(event) {
                         onChange={(event) => setDiveSite(event.target.value)}
                         required
                     />
-                    <label className='label'>Max Depth</label>
+                    <label className='label'>Max Depth (m)</label>
                     <input className='input'
                         type='number'
                         onChange={(event) => setMaxDepth(event.target.value)}
+                        onWheel={(event) => event.target.blur()}
                         required
                     />
-                    <label className='label'>Bottom Time</label>
+                    <label className='label'>Bottom Time (mins)</label>
                     <input className='input'
                         type='number'
                         onChange={(event) => setBottomTime(event.target.value)}
+                        onWheel={(event) => event.target.blur()}
                         required
                     />
                     <label className='label'>Dive Type</label>
@@ -129,10 +132,11 @@ async function _handleSubmit(event) {
                         type='text'
                         onChange={(event) => setWaterConditions(event.target.value)}
                     />
-                    <label className='label'>Water Temperature</label>
+                    <label className='label'>Water Temperature (°C)</label>
                     <input className='input'
                         type='number'
                         onChange={(event) => setWaterTemperature(event.target.value)}
+                        onWheel={(event) => event.target.blur()}
                     />
                     <label className='label'>Body Of Water</label>
                     <input className='input'

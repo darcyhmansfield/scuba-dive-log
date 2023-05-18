@@ -108,7 +108,7 @@ const Update_Dive = (props) => {
                 buddy: buddy,
                 overallFeeling: overallFeeling,
                 diveCompany: diveCompany,
-                user_id: user.id,
+                user_id: props.session.user.id,
                 id: dive.id
             })
     
@@ -180,6 +180,7 @@ const Update_Dive = (props) => {
                          <input className='input' 
                             type='number'
                             onChange={(event) => setDiveNum(event.target.value)}
+                            onWheel={(event) => event.target.blur()}
                             value={ diveNum }
                             required
                         />
@@ -201,6 +202,7 @@ const Update_Dive = (props) => {
                          <input className='input' 
                             type='number'
                             onChange={(event) => setMaxDepth(event.target.value)}
+                            onWheel={(event) => event.target.blur()}
                             value={ maxDepth }
                             required
                         />
@@ -208,6 +210,7 @@ const Update_Dive = (props) => {
                          <input className='input' 
                             type='number'
                             onChange={(event) => setBottomTime(event.target.value)}
+                            onWheel={(event) => event.target.blur()}
                             value={ bottomTime }
                             required
                         />
@@ -233,6 +236,7 @@ const Update_Dive = (props) => {
                          <input className='input' 
                             type='number'
                             onChange={(event) => setWaterTemperature(event.target.value)}
+                            onWheel={(event) => event.target.blur()}
                             value={ waterTemperature }
                         />
                         <label className='label'>Body Of Water</label>
