@@ -8,49 +8,6 @@ const New_Dive = (props) => {
 
     const navigate = useNavigate()
 
-    const [ userDives, setUserDives ] = useState([])
-
-    async function getUserDives() {
-        const { data } = await supabase
-            .from('Dive_Log')
-            .select()
-            .eq('user_id', props.session.user.id)
-        setUserDives(data)
-    }
-
-    useEffect(() => { 
-        getUserDives()
-    }, []);
-
-    async function addDive(diveLogObject) {
-        const { data, error } = await supabase
-            .from('Dive_Log')
-            .insert({
-                dive_number: diveLogObject.diveNum,
-                date: diveLogObject.date,
-                dive_site: diveLogObject.diveSite,
-                max_depth: diveLogObject.maxDepth,
-                bottom_time: diveLogObject.bottomTime,
-                dive_type: diveLogObject.diveType,
-                weather: diveLogObject.weather,
-                water_conditions: diveLogObject.waterConditions,
-                water_temperature: diveLogObject.waterTemperature,
-                body_of_water: diveLogObject.bodyOfWater,
-                equipment: diveLogObject.equipment,
-                dive_buddy: diveLogObject.buddy,
-                dive_company: diveLogObject.diveCompany,
-                overall_feeling: diveLogObject.overallFeeling,
-                user_id: diveLogObject.user_id
-            })
-      
-            if (error) {
-              console.log(error)
-            }
-      
-            getUserDives()
-      
-      }
-      
 
 /////// useStates for Log Dive form
 
@@ -71,30 +28,31 @@ const New_Dive = (props) => {
 
 ////////// Submit function for Log Dive form (turns all returned data into an object to be passed to parent)
 
-    const _handleSubmit = (event) => {
-        event.preventDefault();
-        const diveLogObject = {
-            diveNum: diveNum,
+async function _handleSubmit(event) {
+    event.preventDefault();
+    const { data, error } = await supabase
+        .from('Dive_Log')
+        .insert({
+            dive_number: diveNum,
             date: date,
-            diveSite: diveSite,
-            maxDepth: maxDepth,
-            bottomTime: bottomTime,
-            diveType: diveType,
+            dive_site: diveSite,
+            max_depth: maxDepth,
+            bottom_time: bottomTime,
+            dive_type: diveType,
             weather: weather,
-            waterConditions: waterConditions,
-            waterTemperature: waterTemperature,
-            bodyOfWater: bodyOfWater,
+            water_conditions: waterConditions,
+            water_temperature: waterTemperature,
+            body_of_water: bodyOfWater,
             equipment: equipment,
-            buddy: buddy,
-            overallFeeling: overallFeeling,
-            diveCompany: diveCompany,
-            user_id: props.session.user.id,
-        }
+            dive_buddy: buddy,
+            dive_company: diveCompany,
+            overall_feeling: overallFeeling,
+            user_id: props.session.user.id
+        })
 
-        ////////////// Passes object to App.jsx
-
-        console.log(diveLogObject)
-        props.session.user.onSubmit(diveLogObject)
+        if (error) {
+            console.log(error)
+          }
 
         //////////////////////// Resets Form
 

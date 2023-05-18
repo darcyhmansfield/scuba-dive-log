@@ -8,33 +8,25 @@ import { useParams } from 'react-router-dom'
 const Update_Dive = (props) => {
 
     const [ dive, setDive ] = useState({})
-    const [ userDives, setUserDives ] = useState([])
-    const params = useParams();
+    const [ userDive, setUserDive ] = useState([])
     const navigate = useNavigate()
 
+    const params = useParams();
+    
+    const diveId = params.diveId
+
+    async function getUserDive() {
+        const { data } = await supabase
+            .from('Dive_Log')
+            .select()
+            .eq('id', diveId)
+        setUserDive(data)
+    }
+
     useEffect(() => { 
-        let diveQuery = props.userDives.find(dive => dive.id == params.diveId)
-        setUserDives(props.userDives)
-        setDive(diveQuery)
-
-    }, [])
-
-    //////// Gets Current User/Session
-    
-        const [user, setUser] = useState({});
-    
-        useEffect(() => {
-            async function getUserData() {
-                await supabase.auth.getUser().then((value) => {
-                    // value.data.user
-                    if (value.data?.user) {
-                        console.log(value.data.user);
-                        setUser(value.data.user);
-                    }
-                })
-            }
-            getUserData();
-        }, []);
+        getUserDive()
+        console.log(userDive, diveId)
+    }, [diveId]);
     
     /////// useStates for Log Dive form
     
@@ -53,49 +45,47 @@ const Update_Dive = (props) => {
         const [ overallFeeling, setOverallFeeling ] = useState('')
         const [ diveCompany, setDiveCompany ] = useState('')
     
-    useEffect(() => { 
-        setDiveNum(dive.dive_number)
-        setDate(dive.date)
-        setDiveSite(dive.dive_site)
-        setMaxDepth(dive.max_depth)
-        setBottomTime(dive.bottom_time)
-        setDiveType(dive.dive_type)
-        setWeather(dive.weather)
-        setWaterConditions(dive.water_conditions)
-        setWaterTemperature(dive.water_temperature)
-        setBodyOfWater(dive.body_of_water)
-        setEquipment(dive.equipment)
-        setBuddy(dive.dive_buddy)
-        setOverallFeeling(dive.overall_feeling)
-        setDiveCompany(dive.dive_company)
-    }, [dive])
+    useEffect(() => {
+        setDiveNum(userDive[0].dive_number)
+        setDate(userDive[0].date)
+        setDiveSite(userDive[0].dive_site)
+        setMaxDepth(userDive[0].max_depth)
+        setBottomTime(userDive[0].bottom_time)
+        setDiveType(userDive[0].dive_type)
+        setWeather(userDive[0].weather)
+        setWaterConditions(userDive[0].water_conditions)
+        setWaterTemperature(userDive[0].water_temperature)
+        setBodyOfWater(userDive[0].body_of_water)
+        setEquipment(userDive[0].equipment)
+        setBuddy(userDive[0].dive_buddy)
+        setOverallFeeling(userDive[0].overall_feeling)
+        setDiveCompany(userDive[0].dive_company)
+    }, [userDive])
     
     ////////// Submit function for Log Dive form (turns all returned data into an object to be passed to parent)
     
-        const _handleSubmitUpdate = (event) => {
-            event.preventDefault();
-            const diveLogObject = {
-                diveNum: diveNum,
+    async function _handleSubmitUpdate(event) {
+        event.preventDefault();
+        const { data, error } = await supabase
+            .from('Dive_Log')
+            .update({
+                dive_number: diveNum,
                 date: date,
-                diveSite: diveSite,
-                maxDepth: maxDepth,
-                bottomTime: bottomTime,
-                diveType: diveType,
+                dive_site: diveSite,
+                max_depth: maxDepth,
+                bottom_time: bottomTime,
+                dive_type: diveType,
                 weather: weather,
-                waterConditions: waterConditions,
-                waterTemperature: waterTemperature,
-                bodyOfWater: bodyOfWater,
+                water_conditions: waterConditions,
+                water_temperature: waterTemperature,
+                body_of_water: bodyOfWater,
                 equipment: equipment,
-                buddy: buddy,
-                overallFeeling: overallFeeling,
-                diveCompany: diveCompany,
-                user_id: user.id,
-                id: dive.id
-            }
-    
-            ////////////// Passes object to App.jsx
-    
-            props.updateDive(diveLogObject)
+                dive_buddy: buddy,
+                dive_company: diveCompany,
+                overall_feeling: overallFeeling,
+                user_id: props.session.user.id
+            })
+            .eq('id', props.session.user.id)
             
             //////////////////////// Resets Form
     
@@ -134,6 +124,9 @@ const Update_Dive = (props) => {
         /////////////////////// Displayed Form
     
         return (
+            <div>
+
+            { userDive.length > 0 ? (
             <div className='divelog-form'>
         
                     <h1>Update Dive</h1>
@@ -233,6 +226,14 @@ const Update_Dive = (props) => {
                         <button className='submit-button' id='delete-button' onClick={ _handleDelete }>Delete Dive</button>
                         </div>
                     </form>
+            </div>
+
+            ) : (
+                          
+                <p>Loading</p>
+                
+                ) }
+
             </div>
         
         )

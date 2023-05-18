@@ -7,96 +7,98 @@ import { supabase } from '../config/supabaseClient';
 
 const Show = (props) => {
 
-    const [ dive, setDive ] = useState({})
     const params = useParams();
-    const [ userDives, setUserDives ] = useState([])
+    const [ userDive, setUserDive ] = useState({})
+    const diveId = params.diveId
 
-    async function getUserDives() {
+    async function getUserDive() {
         const { data } = await supabase
             .from('Dive_Log')
             .select()
-            .eq('user_id', props.session.user.id)
-        setUserDives(data)
+            .eq('id', diveId)
+        setUserDive(data)
     }
 
     useEffect(() => { 
-        getUserDives()
-    }, []);
-
-    console.log(userDives)
-
-    useEffect(() => { 
-        let diveQuery = userDives.find(dive => dive.id == params.diveId)
-        console.log(userDives)
-        setDive(diveQuery)
-    }, [userDives])
-
-    console.log(dive)
+        getUserDive()
+        console.log(userDive, diveId)
+    }, [diveId]);
 
     return (
+
         <div>
-            <Table striped bordered hover>
+            { userDive.length > 0 ? (
+        <div>
+            <table>
                 <tbody>
                     <tr>
                     <th>Dive Number</th>
-                    <td>{dive.dive_number}</td>
+                    <td>{userDive[0].dive_number}</td>
                     </tr>
                     <tr>
                     <th>Dive Date</th>
-                    <td>{dive.date}</td>
+                    <td>{userDive[0].date}</td>
                     </tr>
                     <tr>
                     <th>Dive Site</th>
-                    <td>{dive.dive_site}</td>
+                    <td>{userDive[0].dive_site}</td>
                     </tr>
                     <tr>
                     <th>Max Depth</th>
-                    <td>{dive.max_depth} m</td>
+                    <td>{userDive[0].max_depth} m</td>
                     </tr>
                     <tr>
                     <th>Bottom Time</th>
-                    <td>{dive.bottom_time} minutes</td>
+                    <td>{userDive[0].bottom_time} minutes</td>
                     </tr>
                 
                     <tr>
                     <th>Dive Type</th>
-                    <td>{dive.dive_type}</td>
+                    <td>{userDive[0].dive_type}</td>
                     </tr>
                     <tr>
                     <th>Weather</th>
-                    <td>{dive.weather}</td>
+                    <td>{userDive[0].weather}</td>
                     </tr>
                     <tr>
                     <th>Water Conditions</th>
-                    <td>{dive.water_conditions}</td>
+                    <td>{userDive[0].water_conditions}</td>
                     </tr>
                     <tr>
                     <th>Water Temperature</th>
-                    <td>{dive.water_temperature}</td>
+                    <td>{userDive[0].water_temperature}</td>
                     </tr>
                     <tr>
                     <th>Body of Water</th>
-                    <td>{dive.body_of_water}</td>
+                    <td>{userDive[0].body_of_water}</td>
                     </tr>
                     <tr>
                     <th>Equipment</th>
-                    <td>{dive.equipment}</td>
+                    <td>{userDive[0].equipment}</td>
                     </tr>
                     <tr>
                     <th>Dive Buddy</th>
-                    <td>{dive.dive_buddy}</td>
+                    <td>{userDive[0].dive_buddy}</td>
                     </tr>
                     <tr>
                     <th>Overall Feeling</th>
-                    <td>{dive.overall_feeling}</td>
+                    <td>{userDive[0].overall_feeling}</td>
                     </tr>
                     <tr>
                     <th>Dive Company</th>
-                    <td>{dive.dive_company}</td>
+                    <td>{userDive[0].dive_company}</td>
                     </tr>
                 </tbody>
-            </Table>
+            </table>
+
             <Link to={`/update/${params.diveId}`}>Edit Dive</Link>
+
+        </div>
+
+            ) : (
+        
+            <p>Loading</p> ) }
+
         </div>
     
     )

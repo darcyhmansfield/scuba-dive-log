@@ -61,7 +61,13 @@ function App() {
           <Route path="/log-dive" element={!session ? (
             <Auth /> 
           ) : (
-              <New_Dive key={session.user.id} session={session} />
+            <New_Dive key={session.user.id} session={session} />
+          )} />
+
+          <Route path="/update/:diveId" element={!session ? (
+            <Auth /> 
+          ) : (
+            <Update_Dive key={session.user.id} session={session} />
           )} />
 
 
