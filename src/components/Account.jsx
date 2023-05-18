@@ -3,34 +3,35 @@ import { supabase } from "../config/supabaseClient";
 
 export default function Account({ session }) {
     const [loading, setLoading] = useState(true);
-    const [username, setUsername] = useState(true);
-    const [website, setWebsite] = useState(null);
+    const [id, setId] = useState('');
+    const [name, setName] = useState('');
+    const [country, setCountry] = useState('');
+    const [license, setLicense] = useState('')
 
-    console.log(session)
+    const user = session.user;
 
     useEffect(() => {
         async function getProfile() {
             setLoading(true);
-            const { user } = session;
-
+        
             let { data, error } = await supabase
-                .from('profiles')
-                .select(`username, website`)
-                .eq('id', user.id)
-                .single()
+                .from('User_Information')
+                .select(`id, name, country, license`)
+                .eq('user_id', user.id)
 
+            console.log(data[0])
             if (error) {
                 console.warn(error)
             } else if (data) {
-                setUsername(data.username)
-                setWebsite(data.website)
+                setId(data[0].id)
+                setName(data[0].name)
+                setCountry(data[0].country)
+                setLicense(data[0].license)
             }
-
             setLoading(false);
         }
-
         getProfile();
-    }, [session]);
+    }, []);
 
     async function updateProfile(event) {
         event.preventDefault();
@@ -38,24 +39,24 @@ export default function Account({ session }) {
         setLoading(true);
 
         const updates = {
-            id: session.user.id,
-            username,
-            website,
-            updated_at: new Date()
+            id:id,
+            name: name,
+            country: country,
+            license: license,
         }
 
-        let { error } = await supabase.from('profiles').upsert(updates);
+        let { error } = await supabase
+            .from('User_Information')
+            .upsert(updates)
+            
+
+        console.log(updates)
 
         if (error) {
             alert(error.message);
         }
         setLoading(false);
     }
-
-    // const handleLogout = () => {
-    //     supabase.auth.signOut();
-    //     setUser('');
-    // }
 
     return (
         <form className="w-full max-w-xs m-auto" onSubmit={updateProfile}>
@@ -70,24 +71,34 @@ export default function Account({ session }) {
                 />
             </div>
             <div className="relative mt-2 rounded-md shadow-sm">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
                     Name
                 </label>
                 <input
                     type="text"
                     required
-                    value={username || ''}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={name || ''}
+                    onChange={(e) => setName(e.target.value)}
                 />
             </div>
             <div className="relative mt-2 rounded-md shadow-sm">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="website">
-                    Website
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="country">
+                    Country
                 </label>
                 <input
                     type="text"
-                    value={website || ''}
-                    onChange={(e) => setWebsite(e.target.value)}
+                    value={country || ''}
+                    onChange={(e) => setCountry(e.target.value)}
+                />
+            </div>
+            <div className="relative mt-2 rounded-md shadow-sm">
+                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="license">
+                    License
+                </label>
+                <input
+                    type="text"
+                    value={license || ''}
+                    onChange={(e) => setLicense(e.target.value)}
                 />
             </div>
 

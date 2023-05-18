@@ -7,8 +7,6 @@ import Home from "./components/Home";
 import Auth from "./components/Auth";
 import './App.css'
 import Navbar from "./components/Navbar";
-import Login from "./components/Login";
-import User_Home_Page from "./components/User_Home_Page";
 import New_Dive from "./components/New_Dive";
 import Index from "./components/Index";
 import Show from "./components/Show";
@@ -16,7 +14,7 @@ import Update_Dive from "./components/Update_dive";
 import Search_Results from "./components/Search_Results";
 
 function App() {
-  
+
   const [session, setSession] = useState(null);
 
   useEffect(() => {
@@ -31,35 +29,35 @@ function App() {
       <BrowserRouter>
         <Navbar session={session} />
         <Routes>
-          <Route path="/" element={ <Home />} />
-          <Route path="/register" element={ <Register /> } />
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
 
           <Route path="/account" element={!session ? (
-            <Auth /> 
+            <Auth />
           ) : (
-              <Account key={session.user.id} session={session} />
+            <Account key={session.user.id} session={session} />
           )} />
 
           <Route path="/dives" element={!session ? (
             <div>
               <h1>User is not logged in</h1>
-              <button onClick={() => { navigate("/")}}>Go back home!</button>
+              <button onClick={() => { navigate("/") }}>Go back home!</button>
             </div>
           ) : (
-            <Index key={session.user.id} session={session} /> 
+            <Index key={session.user.id} session={session} />
           )} />
 
           <Route path="/dives/:diveId" element={!session ? (
             <div>
               <h1>User is not logged in</h1>
-              <button onClick={() => { navigate("/")}}>Go back home!</button>
+              <button onClick={() => { navigate("/") }}>Go back home!</button>
             </div>
           ) : (
-            <Show key={session.user.id} session={session} /> 
+            <Show key={session.user.id} session={session} />
           )} />
 
           <Route path="/log-dive" element={!session ? (
-            <Auth /> 
+            <Auth />
           ) : (
             <New_Dive key={session.user.id} session={session} />
           )} />
