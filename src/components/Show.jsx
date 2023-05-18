@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import Table from 'react-bootstrap/Table';
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react'
@@ -10,6 +10,7 @@ const Show = (props) => {
     const params = useParams();
     const [ userDive, setUserDive ] = useState({})
     const diveId = params.diveId
+    const navigate = useNavigate()
 
     async function getUserDive() {
         const { data } = await supabase
@@ -24,6 +25,11 @@ const Show = (props) => {
         console.log(userDive, diveId)
     }, [diveId]);
 
+
+    const _handleEdit = () => {
+        navigate(`/update/${params.diveId}`);
+    }
+
     return (
 
         <div>
@@ -32,67 +38,94 @@ const Show = (props) => {
             <table>
                 <tbody>
                     <tr>
-                    <th>Dive Number</th>
+                    <th >Dive Number</th>
                     <td>{userDive[0].dive_number}</td>
                     </tr>
-                    <tr>
+                    <tr className='show-row-index'>
                     <th>Dive Date</th>
                     <td>{userDive[0].date}</td>
                     </tr>
-                    <tr>
+                    <tr className='show-row-index'>
                     <th>Dive Site</th>
                     <td>{userDive[0].dive_site}</td>
                     </tr>
-                    <tr>
+                    <tr className='show-row-index'>
                     <th>Max Depth</th>
                     <td>{userDive[0].max_depth} m</td>
                     </tr>
-                    <tr>
+                    <tr className='show-row-index'>
                     <th>Bottom Time</th>
                     <td>{userDive[0].bottom_time} minutes</td>
                     </tr>
-                
-                    <tr>
+
+                    {userDive[0].dive_type && 
+                    <tr className='show-row-index'>
                     <th>Dive Type</th>
                     <td>{userDive[0].dive_type}</td>
                     </tr>
-                    <tr>
+                    }
+
+                    {userDive[0].weather && 
+                    <tr className='show-row-index'>
                     <th>Weather</th>
                     <td>{userDive[0].weather}</td>
                     </tr>
-                    <tr>
+                    }
+
+                    {userDive[0].water_conditions && 
+                    <tr className='show-row-index'>
                     <th>Water Conditions</th>
                     <td>{userDive[0].water_conditions}</td>
                     </tr>
-                    <tr>
+                    }
+
+                    {userDive[0].water_temperature && 
+                    <tr className='show-row-index'>
                     <th>Water Temperature</th>
                     <td>{userDive[0].water_temperature}</td>
                     </tr>
-                    <tr>
+                    }
+
+                    {userDive[0].body_of_water && 
+                    <tr className='show-row-index'>
                     <th>Body of Water</th>
                     <td>{userDive[0].body_of_water}</td>
                     </tr>
-                    <tr>
+                    }
+
+                    {userDive[0].equipment && 
+                    <tr className='show-row-index'>
                     <th>Equipment</th>
                     <td>{userDive[0].equipment}</td>
                     </tr>
-                    <tr>
+                    }
+
+                    {userDive[0].dive_buddy && 
+                    <tr className='show-row-index'>
                     <th>Dive Buddy</th>
                     <td>{userDive[0].dive_buddy}</td>
                     </tr>
-                    <tr>
+                    }
+
+                    {userDive[0].overall_feeling && 
+                    <tr className='show-row-index'>
                     <th>Overall Feeling</th>
                     <td>{userDive[0].overall_feeling}</td>
                     </tr>
-                    <tr>
+                    }
+
+                    {userDive[0].dive_company && 
+                    <tr className='show-row-index'>
                     <th>Dive Company</th>
                     <td>{userDive[0].dive_company}</td>
                     </tr>
+                    }
                 </tbody>
+
             </table>
 
-            <Link to={`/update/${params.diveId}`}>Edit Dive</Link>
-
+            <button className='submit-button' id='edit-button' onClick={ _handleEdit }>Edit Dive</button>
+            
         </div>
 
             ) : (

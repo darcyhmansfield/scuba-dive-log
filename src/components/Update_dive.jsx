@@ -131,7 +131,6 @@ const Update_Dive = (props) => {
               if (confirmDelete) {
 
                 deleteDive(userDive[0].id)
-
                 navigate('/Dives');
               }
         }
@@ -168,14 +167,14 @@ const Update_Dive = (props) => {
                             value={ diveSite }
                             required
                         />
-                        <label className='label'>Max Depth</label>
+                        <label className='label'>Max Depth (m)</label>
                          <input className='input' 
                             type='number'
                             onChange={(event) => setMaxDepth(event.target.value)}
                             value={ maxDepth }
                             required
                         />
-                        <label className='label'>Bottom Time</label>
+                        <label className='label'>Bottom Time (mins)</label>
                          <input className='input' 
                             type='number'
                             onChange={(event) => setBottomTime(event.target.value)}
@@ -200,7 +199,7 @@ const Update_Dive = (props) => {
                             onChange={(event) => setWaterConditions(event.target.value)}
                             value={ waterConditions }
                         />
-                        <label className='label'>Water Temperature</label>
+                        <label className='label'>Water Temperature (°C)</label>
                          <input className='input' 
                             type='number'
                             onChange={(event) => setWaterTemperature(event.target.value)}
@@ -246,7 +245,7 @@ const Update_Dive = (props) => {
 
             ) : (
                           
-                <p>Loading</p>
+                <p className='loading'>Loading</p>
                 
                 ) }
 

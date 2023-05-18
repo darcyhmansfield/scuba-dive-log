@@ -1,11 +1,12 @@
 import Table from 'react-bootstrap/Table';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { supabase } from '../config/supabaseClient';
 import { useState, useEffect } from 'react';
 
 const Index = (props) => {
 
     const [ userDives, setUserDives ] = useState([])
+    const navigate = useNavigate()
 
     async function getUserDives() {
         const { data } = await supabase
@@ -41,8 +42,8 @@ const Index = (props) => {
             { userDives ? (
                 userDives.map((dive) => (
                 
-                    <tr key={dive.id}> 
-                        <td><Link to={ `/dives/${dive.id}` }>{ dive.dive_number }</Link></td>
+                    <tr key={dive.id} class='divelog-index-row' onClick={ () => _handleRowClick(dive.id) }> 
+                        <td>{ dive.dive_number }</td>
                         <td>{ dive.date }</td>
                         <td>{ dive.dive_site }</td>
                         <td>{ dive.max_depth } m</td>
