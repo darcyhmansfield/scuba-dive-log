@@ -45,8 +45,10 @@ To enhance the exploration experience, the application also provides a search fu
 
 ### How to use?
 
-* Still a work-in-progress
+* Register and log a dive. 
+* You can then view the dive and edit the dive if you desire.
+* You can search for a location which will list the dive sites within that geographic location. 
 
 ### Credits & Acknowledgements 
 
-A special thanks to Joel, CJ, Mark and Tina for helping us build this site. 
+A special thanks to Joel, CJ, Mark, Tina and all of our peers for helping us build this site. 
