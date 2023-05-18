@@ -40,5 +40,3 @@ const Search_Results = ({results}) => {
 };
 
 export default Search_Results;
-
-

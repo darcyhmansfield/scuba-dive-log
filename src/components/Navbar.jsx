@@ -4,15 +4,16 @@ import SearchBar from './Search_Bar';
 import { useNavigate } from 'react-router-dom';
 import logo1 from '../images/logo1.png'
 import { supabase } from '../config/supabaseClient';
+import axios from 'axios';
 
 // Defining a functional component called Navbar
-const Navbar = ({ session }) => {
+const Navbar = ({ session, Search }) => {
 
   const [results, setResults] = useState({});
   const navigate = useNavigate()
   
   const _handleSearch = (q) => {
-    props.Search(q)
+    Search(q)
     navigate('/divesite-search')
   }
 

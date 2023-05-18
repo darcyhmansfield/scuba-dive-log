@@ -12,6 +12,7 @@ import Index from "./components/Index";
 import Show from "./components/Show";
 import Update_Dive from "./components/Update_dive";
 import Search_Results from "./components/Search_Results";
+import axios from 'axios';
 
 function App() {
 
@@ -24,13 +25,42 @@ function App() {
     })
   }, [])
 
+  const [results, setResults] = useState({});
+
+
+  const Search = (q) => {
+  
+    console.log("Searching");
+  
+    const options = {
+  
+        method: 'GET',
+        url: 'https://world-scuba-diving-sites-api.p.rapidapi.com/api/divesite',
+        params: {
+            country: q
+          },    
+        headers: {
+            'X-RapidAPI-Key': '5f19ae380fmsh4d27eefa4a39e09p1e7e57jsne8215947bc70',
+            'X-RapidAPI-Host': 'world-scuba-diving-sites-api.p.rapidapi.com'
+        }
+    };
+  
+    axios.request(options).then((response) => {
+        setResults(response.data);
+        console.log(response.data)
+        console.log(results)
+    });
+  }
+
   return (
     <div className="container mx-auto">
       <BrowserRouter>
-        <Navbar session={session} />
+        <Navbar session={session} Search={Search} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
+          
+          <Route path="/divesite-search" element={<Search_Results results={ results }/> } />
 
           <Route path="/account" element={!session ? (
             <Auth />
