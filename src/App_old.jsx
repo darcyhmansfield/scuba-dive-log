@@ -13,7 +13,7 @@ import Index from "./components/Index";
 import Show from "./components/Show";
 import Update_Dive from "./components/Update_dive";
 import Search_Results from "./components/Search_Results";
-
+// Functional Component
 function App() {
 
   const [session, setSession] = useState(null);
