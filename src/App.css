@@ -339,4 +339,66 @@ td {
   transform: translateY(-2px);
 }
 
-/* ^ Submit/Update/Delete Log Button ^ */
+
+input[type="search"] {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  background-color: #053373;
+  border-radius: 4px;
+  width: 200px;
+  margin-right: 10px;
+}
+
+/* Styles for the search submit button */
+input[type="submit"] {
+  padding: 10px 20px;
+  background-color: #1310bde8;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  /* border: 1px solid #0a479c; */
+}
+
+.search-button:hover {
+  background-color: #006aff;
+  transform: translateY(-3px);
+}
+
+/* ^ Submit/Update/Delete Log/Search Button ^ */
+
+/* Styles for the search input */
+
+
+
+/* Styles for the About div */
+.about {
+  padding: 20px;
+  background-color: rgba(0, 0, 255, 0.2); /* Blue ocean background color */
+  border: 1px solid #fff; /* White border */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow effect for the box */
+  padding: 20px; /* Optional padding for the text content */
+}
+
+.para-about {
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  text-align: justify;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+
+/* Rest of the styles for the heading and paragraphs remain the same */
+
+.about-heading {
+  color: #fff;
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}

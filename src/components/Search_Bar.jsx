@@ -15,7 +15,7 @@ const SearchBar = (props) => {
     return (
         <form onSubmit={ _handleSearch }>
             <input type="search" required autoFocus placeholder="Sydney" onInput={ _handleInput } />
-            <input type="submit" value="Search" />
+            <input type="submit" value="Search" className="search-button"/>
         </form>
     )
 }
