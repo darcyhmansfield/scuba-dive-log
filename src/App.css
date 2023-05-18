@@ -171,6 +171,70 @@ body {
   margin: 1em;
 }
 
+.divelog-index-row:hover {
+  background-color: #0f0fd198;
+}
+
+/* Dive Log Index Design */
+
+h1 {
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+table {
+  width: 68%;
+  table-layout: fixed;
+  background-color: #0d0d8b70;
+  margin: 0 auto;
+  border-radius: 1em;
+}
+
+.tbl-header {
+  background-color: rgba(255,255,255,0.3);
+ }
+
+.tbl-content {
+  height:300px;
+  overflow-x:auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255,255,255,0.3);
+}
+th{
+  font-size: 30px;
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 18px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+td {
+  padding: 15px;
+  text-align: left;
+  vertical-align:middle;
+  font-weight: 300;
+  font-size: 16px;
+  color: #fff;
+  border-bottom: solid 1px rgba(255,255,255,0.1);
+}
+
+@media (max-width: 700px) {
+  th {
+    font-size: 12px;
+  }
+
+  td {
+    font-size: 12px; /* Adjust the font size as needed */
+  }
+
+
+}
+
 /* ^ Dive Log Index Design ^ */
 
 
