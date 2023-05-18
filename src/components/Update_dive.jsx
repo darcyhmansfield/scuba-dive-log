@@ -9,11 +9,27 @@ const Update_Dive = (props) => {
 
     const [ dive, setDive ] = useState({})
     const [ userDive, setUserDive ] = useState([])
+    
     const navigate = useNavigate()
 
     const params = useParams();
+
     
     const diveId = params.diveId
+
+    async function getUserDive() {
+        const { data } = await supabase
+            .from('Dive_Log')
+            .select()
+            .eq('id', diveId)
+        setUserDive(data)
+    }
+
+    useEffect(() => { 
+        getUserDive()
+        console.log(userDive, diveId)
+    }, [diveId]);
+   
 
     async function getUserDive() {
         const { data } = await supabase
@@ -77,17 +93,28 @@ const Update_Dive = (props) => {
                 max_depth: maxDepth,
                 bottom_time: bottomTime,
                 dive_type: diveType,
+                dive_site: diveSite,
+                max_depth: maxDepth,
+                bottom_time: bottomTime,
+                dive_type: diveType,
                 weather: weather,
                 water_conditions: waterConditions,
                 water_temperature: waterTemperature,
                 body_of_water: bodyOfWater,
+                water_conditions: waterConditions,
+                water_temperature: waterTemperature,
+                body_of_water: bodyOfWater,
                 equipment: equipment,
-                dive_buddy: buddy,
-                dive_company: diveCompany,
-                overall_feeling: overallFeeling,
-                user_id: props.session.user.id
+                buddy: buddy,
+                overallFeeling: overallFeeling,
+                diveCompany: diveCompany,
+                user_id: user.id,
+                id: dive.id
             })
-            .eq('id', userDive[0].id)
+    
+            ////////////// Passes object to App.jsx
+    
+            
             
             //////////////////////// Resets Form
     
@@ -140,6 +167,9 @@ const Update_Dive = (props) => {
         /////////////////////// Displayed Form
     
         return (
+            <div>
+
+            { userDive.length > 0 ? (
             <div>
 
             { userDive.length > 0 ? (
@@ -243,6 +273,15 @@ const Update_Dive = (props) => {
                         </div>
                     </form>
             </div>
+
+            ) : (
+                          
+                <p>Loading</p>
+                
+                ) }
+
+            </div>
+        
 
             ) : (
                           
