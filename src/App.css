@@ -155,12 +155,12 @@ body {
 }
 
 .container {
-  margin-top: 10%;
+  margin-top: 30%;
 }
 
 @media (max-width: 750px) {
   .container {
-    margin-top: 30%
+    margin-top: 50%
   }
 }
 
@@ -213,7 +213,6 @@ h1 {
 }
 
 table {
-  width: 68%;
   table-layout: fixed;
   background-color: #0d0d8b70;
   margin: 0 auto;
@@ -255,13 +254,13 @@ td {
 }
 
 
-@media (max-width: 700px) {
+@media (max-width: 770px) {
   th {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   td {
-    font-size: 12px; /* Adjust the font size as needed */
+    font-size: 14px; /* Adjust the font size as needed */
   }
 
 
@@ -283,7 +282,7 @@ td {
   margin-top: 10px;
   position: relative;
   left: 101px;
-  background-color: #0a6bff;
+  background-color: #1310bde8;
   border-radius: 4px;
   border: 0;
   box-shadow: rgba(1,60,136,.5) 0 -1px 3px 0 inset,rgba(0,44,97,.1) 0 3px 6px 0;
@@ -307,7 +306,7 @@ td {
 }
 
 .submit-button:hover {
-  background-color: #065dd8;
+  background-color: #0069fc;
   transform: translateY(-2px);
 }
 
@@ -319,14 +318,25 @@ td {
 }
 
 #delete-button {
-  background-color: #c70d0de8;
+  background-color: #910303e8;
   padding: 0;
   left: 101px;
 }
 
+#delete-button:hover {
+  background-color: #a90f0f;
+  transform: translateY(-2px);
+}
+
 #edit-button {
   margin-top: 15px;
+  background-color: #1310bde8;
   left: -10px;
+}
+
+#edit-button:hover {
+  background-color: #0069fc;
+  transform: translateY(-2px);
 }
 
 /* ^ Submit/Update/Delete Log Button ^ */
