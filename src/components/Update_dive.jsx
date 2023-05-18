@@ -46,6 +46,7 @@ const Update_Dive = (props) => {
         const [ diveCompany, setDiveCompany ] = useState('')
     
     useEffect(() => {
+        if (userDive.length > 0) {
         setDiveNum(userDive[0].dive_number)
         setDate(userDive[0].date)
         setDiveSite(userDive[0].dive_site)
@@ -60,6 +61,7 @@ const Update_Dive = (props) => {
         setBuddy(userDive[0].dive_buddy)
         setOverallFeeling(userDive[0].overall_feeling)
         setDiveCompany(userDive[0].dive_company)
+    }
     }, [userDive])
     
     ////////// Submit function for Log Dive form (turns all returned data into an object to be passed to parent)
@@ -85,7 +87,7 @@ const Update_Dive = (props) => {
                 overall_feeling: overallFeeling,
                 user_id: props.session.user.id
             })
-            .eq('id', props.session.user.id)
+            .eq('id', userDive[0].id)
             
             //////////////////////// Resets Form
     
@@ -109,13 +111,27 @@ const Update_Dive = (props) => {
             navigate('/Dives')
            
         }
+        ////// Delete a dive
+
+        async function deleteDive(diveId) {
+            const { data, error } = await supabase
+                .from('Dive_Log')
+                .delete()
+                .eq('id', diveId)
+    
+                if (error) {
+                console.log(error)
+                }
+        }
 
         const _handleDelete = () => {
             const confirmDelete = window.confirm(
                 'Are you sure you want to delete this dive?'
               );
               if (confirmDelete) {
-                props.deleteDive(dive.id);
+
+                deleteDive(userDive[0].id)
+
                 navigate('/Dives');
               }
         }
