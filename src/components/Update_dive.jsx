@@ -11,25 +11,9 @@ const Update_Dive = (props) => {
     const [ userDive, setUserDive ] = useState([])
     
     const navigate = useNavigate()
-
     const params = useParams();
-
     
     const diveId = params.diveId
-
-    async function getUserDive() {
-        const { data } = await supabase
-            .from('Dive_Log')
-            .select()
-            .eq('id', diveId)
-        setUserDive(data)
-    }
-
-    useEffect(() => { 
-        getUserDive()
-        console.log(userDive, diveId)
-    }, [diveId]);
-   
 
     async function getUserDive() {
         const { data } = await supabase
@@ -93,26 +77,17 @@ const Update_Dive = (props) => {
                 max_depth: maxDepth,
                 bottom_time: bottomTime,
                 dive_type: diveType,
-                dive_site: diveSite,
-                max_depth: maxDepth,
-                bottom_time: bottomTime,
-                dive_type: diveType,
                 weather: weather,
                 water_conditions: waterConditions,
                 water_temperature: waterTemperature,
                 body_of_water: bodyOfWater,
-                water_conditions: waterConditions,
-                water_temperature: waterTemperature,
-                body_of_water: bodyOfWater,
                 equipment: equipment,
-                buddy: buddy,
-                overallFeeling: overallFeeling,
-                diveCompany: diveCompany,
+                dive_buddy: buddy,
+                dive_company: diveCompany,
+                overall_feeling: overallFeeling,
                 user_id: props.session.user.id,
-                id: dive.id
             })
-    
-            ////////////// Passes object to App.jsx
+            .eq('id', userDive[0].id)
     
             
             

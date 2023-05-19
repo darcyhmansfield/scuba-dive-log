@@ -381,6 +381,9 @@ input[type="submit"] {
   border-radius: 8px; /* Rounded corners */
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow effect for the box */
   padding: 20px; /* Optional padding for the text content */
+  position: relative;
+  bottom: 200px;
+
 }
 
 .para-about {

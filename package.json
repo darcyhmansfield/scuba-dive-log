@@ -15,6 +15,7 @@
     "@supabase/auth-ui-react": "^0.4.2",
     "@supabase/auth-ui-shared": "^0.1.6",
     "@supabase/supabase-js": "^2.21.0",
+    "@table-library/react-table-library": "^4.1.4",
     "axios": "^1.4.0",
     "bootstrap": "^5.2.3",
     "dotenv": "^16.0.3",
