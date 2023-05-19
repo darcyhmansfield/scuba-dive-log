@@ -1,4 +1,4 @@
-import GMap from './Google_Map';
+import GMap from './Google_Map copy';
 import { useState, useEffect } from 'react';
 // import GMap from './Google_Map';
 
@@ -11,7 +11,7 @@ const Search_Results = ({results}) => {
 
     return (
         <div>
-            {/* <GMap results={results} /> */}
+            <GMap results={results} />
             {Object.keys(results).length > 0 && 
             <>
             <table style={{ width: 500 }}>
@@ -32,7 +32,6 @@ const Search_Results = ({results}) => {
                     ))}
                 </tbody>
             </table>
-            <GMap results={results} />
             </>
             }
         </div>
