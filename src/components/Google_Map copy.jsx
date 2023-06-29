@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import { mapsApiKey } from "../config/googleMapsClient";
-
+import scuba from "../images/scuba.png"
 
 export default function GMap({ results }) {
 
@@ -18,7 +18,7 @@ export default function GMap({ results }) {
   useEffect(() => {
     if (results.data) {
       results.data.map((location, index) => {
-        markers[index] = {name:location.name, 'position':{lat:+location.lat, lng:+location.lng}}
+        markers[index] = {name:location.name.replace('&#039;',''), 'position':{lat:+location.lat.slice(0,8), lng:+location.lng.slice(0,8)}}
       })
     } else {
       console.log(typeof results.data)
@@ -55,8 +55,9 @@ return isLoaded && (markersArray.length) > 0 ? (
         {markersArray.map((marker, index) => (
           <div>
             <Marker
-            key={index}
-            name={marker.name}
+            // icon={scuba}
+            key={marker}
+            // name={marker.name}
             position={{lat:marker.position.lat, lng:marker.position.lng}}
             />
           </div>
