@@ -3,9 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla&display=swap');
 
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
@@ -68,28 +68,27 @@ body {
 
 /* Styles for the navigation bar */
 .nav {
+  z-index: 10;
   /* Positions the navigation bar fixed to the top left corner of the viewport */
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
    /* Makes the navigation bar span the full width of the viewport */
-  width: 100%;
+  width: 100vw;
     /* Sets the background color to blue */
-  background-color: #0868c3;
+  background-color: rgba(255,255,255,0.8);
     /* Sets the font color to white */
-  color: white;
+  color: rgb(0, 0, 112);
     /* Sets the display property to flex */
   display: flex;
     /* Aligns items along the main axis with space between them */
   justify-content: space-between;
     /* Aligns items along the cross axis to stretch them vertically */
-  align-items: stretch;
+  align-items: center;
  
     /* Adds padding to the left and right of the navigation bar */
-  padding: 0 1rem;
   font-size: 25px;
 }
-
 
 /* Styles for the navigation bar links */
 .nav ul {
@@ -155,13 +154,9 @@ body {
 }
 
 .container {
-  margin-top: 30%;
-}
-
-@media (max-width: 750px) {
-  .container {
-    margin-top: 50%
-  }
+  width: 100%;
+  min-height:70vh;
+  margin: 4em auto;
 }
 
 /* Specify font family */
@@ -381,7 +376,6 @@ input[type="submit"] {
   border-radius: 8px; /* Rounded corners */
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow effect for the box */
   padding: 20px; /* Optional padding for the text content */
-  position: relative;
   bottom: 200px;
 
 }
@@ -404,4 +398,13 @@ input[type="submit"] {
   font-weight: bold;
   text-align: center;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.Gmap {
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  display:flex;
+  margin: 2em 0;
+  
 }

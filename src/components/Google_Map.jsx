@@ -19,6 +19,19 @@ export default function GMap({ results }) {
   const [markers, setMarkers] = useState([]);
 
   useEffect(() => {
+    if (results.data) {
+      results.data.map((location, index) => {
+        markers[index] = {name:location.name.replace('&#039;',''), 'position':{lat:+location.lat.slice(0,8), lng:+location.lng.slice(0,8)}}
+      })
+    } else {
+      console.log(typeof results.data)
+    }
+    console.log("Markers: ", markers)
+    setMarkersArray(markers);
+    console.log(markersArray)
+  }, [results]);
+
+  useEffect(() => {
     if (results && results.data) {
       const diveSites = results.data;
       console.log(diveSites);

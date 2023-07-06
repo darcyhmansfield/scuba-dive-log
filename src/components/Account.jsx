@@ -18,7 +18,7 @@ export default function Account({ session }) {
                 .from('User_Information')
                 .select(`id, name, country, license`)
                 .eq('user_id', user.id)
-
+                
             console.log(data[0])
             if (error) {
                 console.warn(error)
@@ -59,9 +59,9 @@ export default function Account({ session }) {
     }
 
     return (
-        <form className="w-full max-w-xs m-auto" onSubmit={updateProfile}>
+        <form className="w-full max-w-xs m-auto background-gray-100" onSubmit={updateProfile}>
             <div className="relative mt-2 rounded-md shadow-sm">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                <label className="block text-gray-200 text-sm font-bold mb-2" htmlFor="email">
                     Email
                 </label>
                 <input
@@ -71,7 +71,7 @@ export default function Account({ session }) {
                 />
             </div>
             <div className="relative mt-2 rounded-md shadow-sm">
-                <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                <label className=" text-gray-700 text-sm font-bold mb-2" htmlFor="name">
                     Name
                 </label>
                 <input

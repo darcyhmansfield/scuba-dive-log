@@ -4,35 +4,34 @@ import { useState, useEffect } from 'react';
 
 const Search_Results = ({results}) => {
 
-    useEffect(() => { 
-        // setResults(results)
-        console.log("Results:", results);
-    }, [results]);
+    console.log(results.data)
 
     return (
         <div>
-            <GMap results={results} />
-            {Object.keys(results).length > 0 && 
-            <>
-            <table style={{ width: 500 }}>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Region</th>
-                        <th>Ocean</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {results.data.map((location) => (
-                        <tr key={location.id}>
-                            <td>{location.name.replace('&#039;',"'")}</td>
-                            <td>{location.region}</td>
-                            <td>{location.ocean}</td>
+            { results.data ?
+                <>
+                <GMap results={results} />
+                <table style={{ width: 500 }}>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Region</th>
+                            <th>Ocean</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
-            </>
+                    </thead>
+                    <tbody>
+                        {results.data.map((location, index) => (
+                            <tr key={index}>
+                                <td>{location.name.replace('&#039;',"'")}</td>
+                                <td>{location.region}</td>
+                                <td>{location.ocean}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+                </>
+                :
+                <p>Please enter a valid search term above</p>
             }
         </div>
     );

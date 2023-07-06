@@ -26,7 +26,7 @@ const Navbar = ({ session, Search }) => {
       </a>
       <ul>
         {session ? (
-          <div>
+          <div className='menu-items'>
             <li>
               <Link to="/log-dive">Log Dive</Link>
             </li>
@@ -44,7 +44,7 @@ const Navbar = ({ session, Search }) => {
             </li>
           </div>
         ) : (
-          <div>
+          <div className='menu-items'>
             <li>
               <Link to="/account" >Login</Link>
             </li>

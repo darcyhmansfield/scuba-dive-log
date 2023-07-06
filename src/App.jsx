@@ -13,6 +13,7 @@ import Show from "./components/Show";
 import Update_Dive from "./components/Update_dive";
 import Search_Results from "./components/Search_Results";
 import axios from 'axios';
+import Footer from "./components/Footer";
 
 function App() {
 
@@ -46,66 +47,73 @@ function App() {
     };
   
     axios.request(options).then((response) => {
+      if (response.data.message) {
+        alert(response.data.message);
+      } else {
         setResults(response.data);
-        console.log(response.data)
-        console.log(results)
+      }
+    }).catch((error) => {
+      console.log('Error:', error);
     });
   }
 
   return (
-    <div className="container mx-auto">
+    <div className="body">
       <BrowserRouter>
         <Navbar session={session} Search={Search} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          
-          <Route path="/divesite-search" element={<Search_Results results={ results }/> } />
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/register" element={<Register />} />
+            
+            <Route path="/divesite-search" element={<Search_Results results={ results }/> } />
 
-          <Route path="/account" element={!session ? (
-            <Auth />
-          ) : (
-            <Account key={session.user.id} session={session} />
-          )} />
+            <Route path="/account" element={!session ? (
+              <Auth />
+            ) : (
+              <Account key={session.user.id} session={session} />
+            )} />
 
-          <Route path="/dives" element={!session ? (
-            <div>
-              <h1>User is not logged in</h1>
-              <button onClick={() => { navigate("/") }}>Go back home!</button>
-            </div>
-          ) : (
-            <Index key={session.user.id} session={session} />
-          )} />
+            <Route path="/dives" element={!session ? (
+              <div>
+                <h1>User is not logged in</h1>
+                <button onClick={() => { navigate("/") }}>Go back home!</button>
+              </div>
+            ) : (
+              <Index key={session.user.id} session={session} />
+            )} />
 
-          <Route path="/dives/:diveId" element={!session ? (
-            <div>
-              <h1>User is not logged in</h1>
-              <button onClick={() => { navigate("/") }}>Go back home!</button>
-            </div>
-          ) : (
-            <Show key={session.user.id} session={session} />
-          )} />
+            <Route path="/dives/:diveId" element={!session ? (
+              <div>
+                <h1>User is not logged in</h1>
+                <button onClick={() => { navigate("/") }}>Go back home!</button>
+              </div>
+            ) : (
+              <Show key={session.user.id} session={session} />
+            )} />
 
-          <Route path="/log-dive" element={!session ? (
-            <Auth />
-          ) : (
-            <New_Dive key={session.user.id} session={session} />
-          )} />
+            <Route path="/log-dive" element={!session ? (
+              <Auth />
+            ) : (
+              <New_Dive key={session.user.id} session={session} />
+            )} />
 
-          <Route path="/update/:diveId" element={!session ? (
-            <Auth /> 
-          ) : (
-            <Update_Dive key={session.user.id} session={session} />
-          )} />
+            <Route path="/update/:diveId" element={!session ? (
+              <Auth /> 
+            ) : (
+              <Update_Dive key={session.user.id} session={session} />
+            )} />
 
 
 
-          {/* <Route path="/log-dive" element={<New_Dive onSubmit={ addDive }/>} />
-          <Route path="/Dives" element={<Index userDives={ userDives } />} />
-          <Route path="/Dives/:diveId" element={<Show userDives={ userDives }/>} />
-          <Route path="/update/:diveId" element={<Update_Dive userDives={ userDives }  updateDive={ updateDive } deleteDive={ deleteDive } />} />
-          <Route path="/divesite-search" element={<Search_Results results={ results }/> } /> */}
-        </Routes>
+            {/* <Route path="/log-dive" element={<New_Dive onSubmit={ addDive }/>} />
+            <Route path="/Dives" element={<Index userDives={ userDives } />} />
+            <Route path="/Dives/:diveId" element={<Show userDives={ userDives }/>} />
+            <Route path="/update/:diveId" element={<Update_Dive userDives={ userDives }  updateDive={ updateDive } deleteDive={ deleteDive } />} />
+            <Route path="/divesite-search" element={<Search_Results results={ results }/> } /> */}
+          </Routes>
+        </div>
+        <Footer />
       </BrowserRouter>
     </div>
   );
